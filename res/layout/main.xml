@@ -18,5 +18,6 @@
     </LinearLayout>
     
     <Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>
+    <CheckBox android:text="Save on Boot" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"></CheckBox>
 
 </LinearLayout>
