@@ -14,6 +14,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class VoltageControl extends Activity {
 	// Commands
@@ -32,6 +33,7 @@ public class VoltageControl extends Activity {
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
         		ShellInterface.runCommand(buildUvCommand(newVoltages));
+        		Toast.makeText(getBaseContext(), "Voltages Applied Successfully", Toast.LENGTH_SHORT).show();
             }
         });
     	
