@@ -25,6 +25,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int app_name_long=0x7f040006;
         public static final int app_version=0x7f040001;
         public static final int button_apply=0x7f040003;
         public static final int button_default_voltages=0x7f040005;
