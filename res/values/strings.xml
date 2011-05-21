@@ -9,7 +9,7 @@
 -->
 
 <resources>
-    <string name="app_name">Ion Voltage Control</string>
+    <string name="app_name">Proton</string>
     <string name="app_version">0.1</string>
     <string name="button_get_existing_voltages">Get Existing Voltages</string>
     <string name="button_apply">Apply</string>

@@ -9,7 +9,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.jonathongrigg.ion.voltagecontrol"
+      package="com.jonathongrigg.proton.voltagecontrol"
       android:versionName="@string/app_version" android:versionCode="010">
     <uses-sdk android:minSdkVersion="10" />
 
