@@ -96,7 +96,8 @@ public class VoltageControl extends Activity {
 		try {
 			OutputStreamWriter out = new OutputStreamWriter(openFileOutput(
 					"proton_voltage_control", 0));
-			String tmp = "#!/system/bin/sh\n\n"
+			String tmp = "#!/system/bin/sh\n"
+					+"# Proton Voltage Control 'Set on Boot' file \n"
 					+ buildUvCommand(et);
 			out.write(tmp);
 			out.close();
