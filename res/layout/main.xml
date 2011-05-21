@@ -10,7 +10,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
-    <EditText android:id="@+id/editText1" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Voltages"></EditText>
+    <EditText android:id="@+id/editText1" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Voltages" android:inputType="number"></EditText>
     
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content">
     	<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1"></Button>  
