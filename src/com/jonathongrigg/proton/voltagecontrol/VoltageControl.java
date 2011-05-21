@@ -109,7 +109,7 @@ public class VoltageControl extends Activity {
 				.runCommand("chmod 777 /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control");
 		ShellInterface.runCommand("busybox mount -o remount,rw  /system");
 		ShellInterface
-				.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/S_volt_scheduler /etc/init.d/proton_voltage_control");
+				.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/init.d/proton_voltage_control");
 		ShellInterface.runCommand("busybox mount -o remount,ro  /system");
 		Toast.makeText(this,
 				"Settings saved in file \"/etc/init.d/proton_voltage_control\"",
