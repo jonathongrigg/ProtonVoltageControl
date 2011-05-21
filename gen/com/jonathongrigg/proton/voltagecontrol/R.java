@@ -14,10 +14,10 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int button1=0x7f050002;
-        public static final int button2=0x7f050003;
+        public static final int button1=0x7f050001;
+        public static final int button2=0x7f050002;
+        public static final int button3=0x7f050003;
         public static final int editText1=0x7f050000;
-        public static final int linearLayout1=0x7f050001;
         public static final int textView1=0x7f050004;
     }
     public static final class layout {
@@ -27,6 +27,7 @@ public final class R {
         public static final int app_name=0x7f040000;
         public static final int app_version=0x7f040001;
         public static final int button_apply=0x7f040003;
+        public static final int button_default_voltages=0x7f040005;
         public static final int button_get_existing_voltages=0x7f040002;
         public static final int stock_voltages=0x7f040004;
     }

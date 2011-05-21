@@ -26,9 +26,10 @@ public class VoltageControl extends Activity {
         setContentView(R.layout.main);
         
         final EditText newVoltages = (EditText) findViewById(R.id.editText1);
-    	final TextView existingVoltagesView = (TextView) findViewById(R.id.textView1);
+    	final TextView getVoltagesView = (TextView) findViewById(R.id.textView1);
     	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
+    	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
     	
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -38,7 +39,13 @@ public class VoltageControl extends Activity {
     	
         existingVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                getExistingVoltages(existingVoltagesView);
+                getExistingVoltages(getVoltagesView);
+            }
+        });
+        
+        defaultVoltagesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                newVoltages.setText(R.string.stock_voltages);
             }
         });
     }

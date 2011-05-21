@@ -9,14 +9,11 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_height="fill_parent" android:orientation="vertical">
     <EditText android:id="@+id/editText1" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="@string/stock_voltages"></EditText>
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
-    <Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
+    <Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>
     <Button android:id="@+id/button2" android:layout_height="wrap_content" android:text="@string/button_get_existing_voltages" android:layout_width="match_parent"></Button>
-    </LinearLayout>
+    <Button android:id="@+id/button3" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="@string/button_default_voltages"></Button>
     <TextView android:text="" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 </LinearLayout>
