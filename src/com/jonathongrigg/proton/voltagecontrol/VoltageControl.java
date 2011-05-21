@@ -14,7 +14,6 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class VoltageControl extends Activity {
 	// Commands
@@ -60,6 +59,7 @@ public class VoltageControl extends Activity {
         tableValues = existingVoltagesValue.split(" ");
         for (int i = 1; i < tableValues.length; i += 3) {
         	voltages.append(tableValues[i]);
+        	voltages.append(" ");
         }
         et.setText(voltages.toString());
 	}
