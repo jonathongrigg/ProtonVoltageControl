@@ -9,11 +9,15 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:orientation="vertical">
+    android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
     <EditText android:id="@+id/editText1" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Voltages"></EditText>
+    
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content">
+    	<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1"></Button>  
+    	<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content"></Button>
+    </LinearLayout>
+    
     <Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>
-    <Button android:id="@+id/button2" android:layout_height="wrap_content" android:text="@string/button_get_existing_voltages" android:layout_width="match_parent"></Button>
-    <Button android:id="@+id/button3" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="@string/button_default_voltages"></Button>
     <TextView android:text="" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+
 </LinearLayout>
