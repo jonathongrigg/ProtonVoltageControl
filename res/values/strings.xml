@@ -11,8 +11,8 @@
 <resources>
     <string name="app_name">Proton</string>
     <string name="app_version">0.1</string>
-    <string name="button_get_existing_voltages">Get Existing Voltages</string>
+    <string name="button_get_existing_voltages">Existing Voltages</string>
     <string name="button_apply">Apply</string>
     <string name="stock_voltages">1450 1400 1350 1250 1200 1050 950 950</string>
-    <string name="button_default_voltages">Get Default Voltages</string>
+    <string name="button_default_voltages">Default Voltages</string>
 </resources>
