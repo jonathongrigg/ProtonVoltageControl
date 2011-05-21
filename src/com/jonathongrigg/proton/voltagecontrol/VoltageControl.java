@@ -26,7 +26,6 @@ public class VoltageControl extends Activity {
         setContentView(R.layout.main);
         
         final EditText newVoltages = (EditText) findViewById(R.id.editText1);
-    	final TextView getVoltagesView = (TextView) findViewById(R.id.textView1);
     	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
@@ -39,7 +38,7 @@ public class VoltageControl extends Activity {
     	
         existingVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                getExistingVoltages(getVoltagesView);
+                getExistingVoltages(newVoltages);
             }
         });
         
@@ -50,12 +49,19 @@ public class VoltageControl extends Activity {
         });
     }
     
-    public void getExistingVoltages(TextView tv) {
+    private void getExistingVoltages(EditText et) {
         String existingVoltagesValue = null;
+        String[] tableValues;
+        StringBuilder voltages = new StringBuilder();
+        
         if (ShellInterface.isSuAvailable()) {
         	existingVoltagesValue = ShellInterface.getProcessOutput(C_UV_MV_TABLE);
         }
-        tv.setText(existingVoltagesValue);
+        tableValues = existingVoltagesValue.split(" ");
+        for (int i = 1; i < tableValues.length; i += 3) {
+        	voltages.append(tableValues[i]);
+        }
+        et.setText(voltages.toString());
 	}
     
 	private String buildUvCommand(EditText et) {
