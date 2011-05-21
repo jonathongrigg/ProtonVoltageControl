@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+** Copyright Jonathon Grigg <http://www.jonathongrigg.com> May 2011
+** Email me at jonathongrigg@gmail.com if needed for some reason
+** 
+** Source code licensed under the Open Software License version 3.0
+** 	http://www.opensource.org/licenses/osl-3.0
+-->
+
+<resources>
+    <string name="app_name">Ion Voltage Control</string>
+    <string name="app_version">0.1</string>
+    <string name="button_get_existing_voltages">Get Existing Voltages</string>
+    <string name="button_apply">Apply</string>
+</resources>

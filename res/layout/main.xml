@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+** Copyright Jonathon Grigg <http://www.jonathongrigg.com> May 2011
+** Email me at jonathongrigg@gmail.com if needed for some reason
+** 
+** Source code licensed under the Open Software License version 3.0
+** 	http://www.opensource.org/licenses/osl-3.0
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <EditText android:id="@+id/editText1" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="EditText"></EditText>
+    <Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
+    <Button android:id="@+id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/button_get_existing_voltages"></Button>
+    <TextView android:text="" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+</LinearLayout>

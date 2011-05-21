@@ -1,0 +1,8 @@
+Ion Voltage Control
+---
+Voltage Control app for Nexus S phones running a supported Netarchy Nexus Kernel (all versions from 1.3.0.6 and up)
+--
+Credits
+Jonathon Grigg
+xan @ xda-developers.com [Some code and implementation ideas]
+Serge [ShellInterface]
