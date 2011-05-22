@@ -117,16 +117,13 @@ public class VoltageControl extends Activity {
 			out.write(tmp);
 			out.close();
 		} catch (java.io.IOException e) {
-			Toast.makeText(this, "ERROR: file not saved!", Toast.LENGTH_LONG)
-					.show();
+			Toast.makeText(this, "ERROR: file not saved!", Toast.LENGTH_LONG).show();
 		}
 
 		ShellInterface.runCommand("chmod 777 /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control");
 		ShellInterface.runCommand("busybox mount -o remount,rw  /system");
 		ShellInterface.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/init.d/proton_voltage_control");
 		ShellInterface.runCommand("busybox mount -o remount,ro  /system");
-		Toast.makeText(this,
-				"Settings saved in file \"/etc/init.d/proton_voltage_control\"",
-				Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
 	}
 }
