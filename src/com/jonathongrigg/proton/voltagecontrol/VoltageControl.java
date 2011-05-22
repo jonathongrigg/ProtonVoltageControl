@@ -85,9 +85,8 @@ public class VoltageControl extends Activity {
         String[] tableValues;
         StringBuilder voltages = new StringBuilder();
         
-        if (ShellInterface.isSuAvailable()) {
-        	existingVoltagesValue = ShellInterface.getProcessOutput(C_UV_MV_TABLE);
-        }
+        existingVoltagesValue = ShellInterface.getProcessOutput(C_UV_MV_TABLE);
+        
         tableValues = existingVoltagesValue.split(" ");
         for (int i = 1; i < tableValues.length; i += 3) {
         	voltages.append(tableValues[i]);
