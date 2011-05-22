@@ -57,7 +57,7 @@ public class VoltageControl extends Activity {
             		Toast.makeText(getBaseContext(), "Voltages Applied Successfully", Toast.LENGTH_SHORT).show();
             		}
             		else {
-            			Toast.makeText(getBaseContext(), R.string.error_no_voltages, Toast.LENGTH_LONG).show();
+            			Toast.makeText(getBaseContext(), "Error: No Voltages Entered", Toast.LENGTH_LONG).show();
             		}
             	}
             }
@@ -124,7 +124,7 @@ public class VoltageControl extends Activity {
 			out.write(tmp);
 			out.close();
 		} catch (java.io.IOException e) {
-			Toast.makeText(this, "ERROR: file not saved!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Error: file not saved!", Toast.LENGTH_LONG).show();
 		}
 
 		ShellInterface.runCommand("chmod 777 /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control");
@@ -136,7 +136,7 @@ public class VoltageControl extends Activity {
 	
 	private void removeBootSettings() {
 		if (!ShellInterface.getProcessOutput(C_LIST_INIT_D).contains("proton_voltage_control")) {
-			Toast.makeText(getBaseContext(), R.string.error_no_boot_settings, Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(), "Error: No Saved Boot Settings Present", Toast.LENGTH_LONG).show();
 		}
 		else {
 			ShellInterface.runCommand("busybox mount -o remount,rw  /system");
