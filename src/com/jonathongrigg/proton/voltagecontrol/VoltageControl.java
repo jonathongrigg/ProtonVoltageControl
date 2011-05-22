@@ -22,11 +22,19 @@ import android.widget.Toast;
 public class VoltageControl extends Activity {
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
+	
+	// Checks
+	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        if (isSuAvailable = false) {
+        	Toast.makeText(getBaseContext(), "ERROR: No Root Access!", Toast.LENGTH_LONG).show();
+        	finish();
+        }
         
         final EditText newVoltages = (EditText) findViewById(R.id.editText1);
     	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
