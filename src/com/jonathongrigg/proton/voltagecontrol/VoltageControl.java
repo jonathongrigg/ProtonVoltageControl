@@ -48,8 +48,13 @@ public class VoltageControl extends Activity {
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	if (saveOnBootCheckBox.isChecked()) {
-            		ShellInterface.runCommand(buildUvCommand(newVoltages));
-            		saveBootSettings(newVoltages);
+            		if (newVoltages.length() > 0) {
+                		ShellInterface.runCommand(buildUvCommand(newVoltages));
+                		saveBootSettings(newVoltages);
+                		}
+                		else {
+                			Toast.makeText(getBaseContext(), "Error: No Voltages Entered", Toast.LENGTH_LONG).show();
+                		}
             	}
             	else {
             		if (newVoltages.length() > 0) {
