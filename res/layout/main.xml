@@ -17,8 +17,12 @@
     	<Button android:text="@string/button_recommended_voltages" android:id="@+id/button4" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>  
     	<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>
     </LinearLayout>
+     
+    <LinearLayout android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:layout_width="match_parent">
+    	<Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent"></Button>
+    	<Button android:text="@string/button_remove_boot_settings" android:id="@+id/button5" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent"></Button>
+    </LinearLayout>
     
-    <Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>
     <CheckBox android:text="Save on Boot" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"></CheckBox>
 
 </LinearLayout>

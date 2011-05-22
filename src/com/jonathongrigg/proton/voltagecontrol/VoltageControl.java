@@ -20,9 +20,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class VoltageControl extends Activity {
+	
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
-	
+	protected static final String C_LIST_INIT_D = "ls /etc/init.d/";
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
@@ -41,6 +42,7 @@ public class VoltageControl extends Activity {
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
     	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
+    	Button removeBootSettingsButton = (Button) findViewById(R.id.button5);
     	final CheckBox saveOnBootCheckBox = (CheckBox) findViewById(R.id.checkBox1);
     	
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +57,7 @@ public class VoltageControl extends Activity {
             		Toast.makeText(getBaseContext(), "Voltages Applied Successfully", Toast.LENGTH_SHORT).show();
             		}
             		else {
-            			Toast.makeText(getBaseContext(), "ERROR: No voltages entered!", Toast.LENGTH_LONG).show();
+            			Toast.makeText(getBaseContext(), R.string.error_no_voltages, Toast.LENGTH_LONG).show();
             		}
             	}
             }
@@ -76,6 +78,12 @@ public class VoltageControl extends Activity {
         recommendedVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 newVoltages.setText(R.string.recommended_voltages);
+            }
+        });
+        
+        removeBootSettingsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                removeBootSettings();
             }
         });
     }
@@ -124,5 +132,17 @@ public class VoltageControl extends Activity {
 		ShellInterface.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/init.d/proton_voltage_control");
 		ShellInterface.runCommand("busybox mount -o remount,ro  /system");
 		Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+	}
+	
+	private void removeBootSettings() {
+		if (!ShellInterface.getProcessOutput(C_LIST_INIT_D).contains("proton_voltage_control")) {
+			Toast.makeText(getBaseContext(), R.string.error_no_boot_settings, Toast.LENGTH_LONG).show();
+		}
+		else {
+			ShellInterface.runCommand("busybox mount -o remount,rw  /system");
+			ShellInterface.runCommand("rm /etc/init.d/proton_voltage_control");
+			ShellInterface.runCommand("busybox mount -o remount,ro  /system");
+			Toast.makeText(this, "Removed settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+		}
 	}
 }

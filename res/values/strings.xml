@@ -18,4 +18,8 @@
     <string name="app_name_long">Proton Voltage Control</string>
     <string name="recommended_voltages">1425 1375 1325 1225 1175 1025 925 925</string>
     <string name="button_recommended_voltages">Suggested Voltages</string>
+    <string name="button_remove_boot_settings">Remove Boot Settings</string>
+    <string name="error_no_boot_settings">Error: No Saved Boot Settings Present</string>
+    <string name="error_no_voltages">Error: No Voltages Entered</string>
+    
 </resources>
