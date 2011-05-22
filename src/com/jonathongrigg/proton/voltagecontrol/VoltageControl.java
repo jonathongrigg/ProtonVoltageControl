@@ -32,6 +32,7 @@ public class VoltageControl extends Activity {
     	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
+    	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
     	final CheckBox saveOnBootCheckBox = (CheckBox) findViewById(R.id.checkBox1);
     	
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +62,12 @@ public class VoltageControl extends Activity {
         defaultVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 newVoltages.setText(R.string.stock_voltages);
+            }
+        });
+        
+        recommendedVoltagesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                newVoltages.setText(R.string.recommended_voltages);
             }
         });
     }

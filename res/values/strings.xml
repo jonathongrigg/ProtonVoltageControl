@@ -16,4 +16,6 @@
     <string name="stock_voltages">1450 1400 1350 1250 1200 1050 950 950</string>
     <string name="button_default_voltages">Default Voltages</string>
     <string name="app_name_long">Proton Voltage Control</string>
+    <string name="recommended_voltages">1425 1375 1325 1225 1175 1025 925 925</string>
+    <string name="button_recommended_voltages">Suggested Voltages</string>
 </resources>
