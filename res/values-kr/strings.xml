@@ -19,5 +19,6 @@
     <string name="recommended_voltages">1430 1380 1330 1230 1180 1030 930 930</string>
 	<string name="button_recommended_voltages">추천 전압값</string>
 	<string name="button_remove_boot_settings">부팅시 적용 삭제</string>
+	<string name="checkbox_save_on_boot">부팅 시 적용</string>
 
 </resources>

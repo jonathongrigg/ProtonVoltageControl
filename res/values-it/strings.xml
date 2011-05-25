@@ -19,5 +19,6 @@
     <string name="recommended_voltages">1430 1380 1330 1230 1180 1030 930 930</string>
     <string name="button_recommended_voltages">Voltaggi suggeriti</string>
     <string name="button_remove_boot_settings">Rimuovi settaggi dall\'avvio</string>
+    <string name="checkbox_save_on_boot">Applica all\'avvio</string>
     
 </resources>
