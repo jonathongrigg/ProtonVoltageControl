@@ -22,7 +22,7 @@
     <string name="unit_voltage"> mV</string>
     <string name="cpu100">100MHz voltage: </string>
     <string name="cpu200">200MHz voltage: </string>
-    <string name="cpu400">400MHx voltage: </string>
+    <string name="cpu400">400MHz voltage: </string>
     <string name="cpu800">800MHz voltage: </string>
     <string name="cpu1000">1 GHz voltage: </string>
     <string name="cpu1200">1.1 GHz voltage: </string>
