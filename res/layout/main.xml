@@ -23,6 +23,6 @@
     	<Button android:text="@string/button_remove_boot_settings" android:id="@+id/button5" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent"/>
     </LinearLayout>
     
-    <CheckBox android:text="Save on Boot" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <CheckBox android:text="@string/checkbox_save_on_boot" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 
 </LinearLayout>
