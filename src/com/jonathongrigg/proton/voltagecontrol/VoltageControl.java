@@ -25,6 +25,8 @@ public class VoltageControl extends Activity {
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
 	protected static final String C_LIST_INIT_D = "ls /etc/init.d/";
+	protected static final String C_LIST_SDCARD = "ls /mnt/sdcard";
+	protected static final String C_WGET_E_BOOT = "wget *url*/proton_emergency_boot.zip";
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
@@ -253,6 +255,16 @@ public class VoltageControl extends Activity {
 		command.append("\" > /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table");//
 	
 		return command.toString();
+	}
+	
+	private void downloadEmergencyBoot() {
+		if (!ShellInterface.getProcessOutput(C_LIST_SDCARD).contains("proton_emergency_boot.zip")) {
+			Toast.makeText(getBaseContext(), "Emergency boot zip already present!", Toast.LENGTH_LONG).show();
+		}
+		else {
+			ShellInterface.runCommand(C_WGET_E_BOOT);
+			Toast.makeText(this, "Emergency boot zip \"proton_emergency_boot.zip\" saved to sdcard", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	private void saveBootSettings(String et) {
