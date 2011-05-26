@@ -26,7 +26,7 @@
     <string name="cpu400">400MHz voltage: </string>
     <string name="cpu800">800MHz voltage: </string>
     <string name="cpu1000">1 GHz voltage: </string>
-    <string name="cpu1200">1.1 GHz voltage: </string>
+    <string name="cpu1200">1.2 GHz voltage: </string>
     <string name="cpu1300">1.3 GHz voltage: </string>
     <string name="cpu1400">1.4 GHz voltage: </string>
     <string name="settings">Preferences</string>
