@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+** Copyright Jonathon Grigg <http://www.jonathongrigg.com> May 2011
+** Email me at jonathongrigg@gmail.com if needed for some reason
+** 
+** Source code licensed under the Open Software License version 3.0
+** 	http://www.opensource.org/licenses/osl-3.0
+-->
+
+<resources>
+    <string name="app_name">Proton</string>
+    <string name="app_version">0.2.0</string>
+    <string name="button_get_existing_voltages">Voltaggi attuali</string>
+    <string name="button_apply">Applica</string>
+    <string name="stock_voltages">1450 1400 1350 1250 1200 1050 950 950</string>
+    <string name="button_default_voltages">Voltaggi di default</string>
+    <string name="app_name_long">Proton Voltage Control</string>
+    <string name="recommended_voltages">1430 1380 1330 1230 1180 1030 930 930</string>
+    <string name="button_recommended_voltages">Voltaggi suggeriti</string>
+    <string name="button_remove_boot_settings">Rimuovi settaggi dall\'avvio</string>
+    <string name="checkbox_save_on_boot">Applica all\'avvio</string>
+    
+</resources>

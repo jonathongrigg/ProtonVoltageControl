@@ -35,6 +35,7 @@ public final class R {
         public static final int button_get_existing_voltages=0x7f040002;
         public static final int button_recommended_voltages=0x7f040008;
         public static final int button_remove_boot_settings=0x7f040009;
+        public static final int checkbox_save_on_boot=0x7f04000a;
         public static final int recommended_voltages=0x7f040007;
         public static final int stock_voltages=0x7f040004;
     }
