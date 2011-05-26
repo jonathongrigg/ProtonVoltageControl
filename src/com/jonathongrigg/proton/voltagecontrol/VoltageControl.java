@@ -11,9 +11,13 @@ package com.jonathongrigg.proton.voltagecontrol;
 import java.io.OutputStreamWriter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -187,6 +191,10 @@ public class VoltageControl extends Activity {
             }
         });
     }
+  
+  
+
+    
     
     private void getExistingVoltages() {
         String existingVoltagesValue = null;
@@ -297,4 +305,5 @@ public class VoltageControl extends Activity {
 			Toast.makeText(this, "Removed settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
 		}
 	}
+	
 }
