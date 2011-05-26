@@ -11,13 +11,8 @@ package com.jonathongrigg.proton.voltagecontrol;
 import java.io.OutputStreamWriter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -161,29 +156,29 @@ public class VoltageControl extends Activity {
   
 
     private void recommendedVoltages() {
+    	// Edit text boxes
         EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
-		cpu1400.setText(rV[0]);
-
         EditText cpu1300 = (EditText)findViewById(R.id.editText1300);	// 1300mhz
-		cpu1300.setText("1375");
-
         EditText cpu1200 = (EditText)findViewById(R.id.editText1200);	// 1200mhz
-		cpu1200.setText("1325");
-
         EditText cpu1000 = (EditText)findViewById(R.id.editText1000);	// 1000mhz
-		cpu1000.setText("1225");
-
         EditText cpu800 = (EditText)findViewById(R.id.editText800);		// 800mhz
-		cpu800.setText("1175");
-
         EditText cpu400 = (EditText)findViewById(R.id.editText400);		// 400mhz
-		cpu400.setText("1025");
-
         EditText cpu200 = (EditText)findViewById(R.id.editText200);		// 200mhz
-		cpu200.setText("925");
-
         EditText cpu100 = (EditText)findViewById(R.id.editText100);		// 100mhz
-		cpu100.setText("925");
+        
+        // Strings
+        String rvString = this.getString(R.string.recommended_voltages);
+        String[] rv = rvString.split(" ");
+        
+        // Applying code
+        cpu1400.setText(rv[0]);
+        cpu1300.setText(rv[1]);
+        cpu1200.setText(rv[2]);
+        cpu1000.setText(rv[3]);
+        cpu800.setText(rv[4]);
+        cpu400.setText(rv[5]);
+        cpu200.setText(rv[6]);
+        cpu100.setText(rv[7]);
     }
     
     private void getExistingVoltages() {
