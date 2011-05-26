@@ -2,8 +2,9 @@ ui_print("Emergency Restore for Proton Voltage Control 'Set on Boot' feature");
 ui_print(" ");
 ui_print("You've obviously set your voltages out of your phones tolerance levels :(");
 ui_print(" ");
-show_progress(0.500000, 0);
 ui_print("Removing proton_voltage_control init.d script...");
-mount("ext4", "EMMC", "/dev/block/platform/s3c-sdhci.0/by-name/system", "/system");
-
-unmount("/system");
+run_program("/sbin/busybox", "mount", "/system");
+show_progress(1, 15);
+delete("/system/etc/init.d/proton_voltage_control");
+run_program("/sbin/busybox", "umount", "/system");
+ui_print("Successfully removed!");
