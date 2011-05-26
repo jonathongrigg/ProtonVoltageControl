@@ -46,7 +46,6 @@ public class VoltageControl extends Activity {
         	finish();
         }
         
-        //final EditText newVoltages = (EditText) findViewById(R.id.editText1);
     	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
