@@ -34,7 +34,7 @@
     	<EditText android:id="@+id/editText100" android:layout_height="wrap_content" 
     		android:text="" android:hint="925" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
     
     <!--  200MHZ -->
@@ -44,7 +44,7 @@
     	<EditText android:id="@+id/editText200" android:layout_height="wrap_content" 
     		android:text="" android:hint="925" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
 
 	<!--  400MHZ -->
@@ -54,7 +54,7 @@
     	<EditText android:id="@+id/editText400" android:layout_height="wrap_content" 
     		android:text="" android:hint="1050" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
 	
 	
@@ -65,7 +65,7 @@
     	<EditText android:id="@+id/editText800" android:layout_height="wrap_content" 
     		android:text="" android:hint="1200" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
 	
 	<!--  1000MHZ -->
@@ -75,7 +75,7 @@
     	<EditText android:id="@+id/editText1000" android:layout_height="wrap_content" 
     		android:text="" android:hint="1275" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
 	
 	<!--  1200MHZ -->
@@ -85,7 +85,7 @@
     	<EditText android:id="@+id/editText1200" android:layout_height="wrap_content" 
     		android:text="" android:hint="1325" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
 	
 	<!--  1300MHZ -->
@@ -95,7 +95,7 @@
     	<EditText android:id="@+id/editText1300" android:layout_height="wrap_content" 
     		android:text="" android:hint="1400" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip"  android:paddingLeft="10px"
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
 	
 	<!--  1400MHZ -->
@@ -105,7 +105,7 @@
     	<EditText android:id="@+id/editText1400" android:layout_height="wrap_content" 
     		android:text="" android:hint="1500" android:inputType="phone" android:layout_width="61dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px"
-    		android:textSize="45px" />
+    		android:textSize="30px" />
     </LinearLayout>
 
 	<!--  save on boot? -->
