@@ -114,31 +114,7 @@ public class VoltageControl extends Activity {
         
         defaultVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	
-                //1400mhz
-                EditText cpu1400 = (EditText)findViewById(R.id.editText1400);
-        		cpu1400.setText("1450");
-        		//1300mhz
-                EditText cpu1300 = (EditText)findViewById(R.id.editText1300);
-        		cpu1300.setText("1400");
-        		//1200mhz
-                EditText cpu1200 = (EditText)findViewById(R.id.editText1200);
-        		cpu1200.setText("1350");
-        		//1000mhz
-                EditText cpu1000 = (EditText)findViewById(R.id.editText1000);
-        		cpu1000.setText("1250");
-        		//800mhz
-                EditText cpu800 = (EditText)findViewById(R.id.editText800);
-        		cpu800.setText("1200");
-        		//400mhz
-                EditText cpu400 = (EditText)findViewById(R.id.editText400);
-        		cpu400.setText("1050");
-        		//200mhz
-                EditText cpu200 = (EditText)findViewById(R.id.editText200);
-        		cpu200.setText("950");
-        		//100mhz
-                EditText cpu100 = (EditText)findViewById(R.id.editText100);
-        		cpu100.setText("950");
+            	defaultVoltages();
             }
         });
         
@@ -155,7 +131,31 @@ public class VoltageControl extends Activity {
         });
     }
   
-  
+    private void defaultVoltages() {
+    	// Edit text boxes
+        EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
+        EditText cpu1300 = (EditText)findViewById(R.id.editText1300);	// 1300mhz
+        EditText cpu1200 = (EditText)findViewById(R.id.editText1200);	// 1200mhz
+        EditText cpu1000 = (EditText)findViewById(R.id.editText1000);	// 1000mhz
+        EditText cpu800 = (EditText)findViewById(R.id.editText800);		// 800mhz
+        EditText cpu400 = (EditText)findViewById(R.id.editText400);		// 400mhz
+        EditText cpu200 = (EditText)findViewById(R.id.editText200);		// 200mhz
+        EditText cpu100 = (EditText)findViewById(R.id.editText100);		// 100mhz
+        
+        // Strings
+        String dvString = this.getString(R.string.stock_voltages);
+        String[] dv = dvString.split(" ");
+        
+        // Applying code
+        cpu1400.setText(dv[0]);
+        cpu1300.setText(dv[1]);
+        cpu1200.setText(dv[2]);
+        cpu1000.setText(dv[3]);
+        cpu800.setText(dv[4]);
+        cpu400.setText(dv[5]);
+        cpu200.setText(dv[6]);
+        cpu100.setText(dv[7]);
+    }  
 
     private void recommendedVoltages() {
     	// Edit text boxes
