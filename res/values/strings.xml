@@ -20,6 +20,7 @@
     <string name="button_recommended_voltages">Suggested Voltages</string>
     <string name="button_remove_boot_settings">Remove Boot Settings</string>
     <string name="checkbox_save_on_boot">Save on Boot</string>
+    <string name="download_emergency_boot">Download Emergency Boot Zip</string>
     <string name="unit_voltage"> mV</string>
     <string name="cpu100">100MHz voltage: </string>
     <string name="cpu200">200MHz voltage: </string>

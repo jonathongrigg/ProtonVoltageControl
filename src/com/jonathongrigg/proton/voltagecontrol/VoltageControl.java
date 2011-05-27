@@ -11,8 +11,13 @@ package com.jonathongrigg.proton.voltagecontrol;
 import java.io.OutputStreamWriter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,8 +30,6 @@ public class VoltageControl extends Activity {
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
 	protected static final String C_LIST_INIT_D = "ls /etc/init.d/";
-	protected static final String C_LIST_SDCARD = "ls /mnt/sdcard";
-	protected static final String C_WGET_E_BOOT = "wget http://dl.andro1d.org/proton_emergency_boot.zip";
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
@@ -130,7 +133,24 @@ public class VoltageControl extends Activity {
             }
         });
     }
+    
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
   
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.menuEmergencyBoot:
+            downloadEmergencyBoot();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
+    
     private void defaultVoltages() {
     	// Edit text boxes
         EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
@@ -258,13 +278,9 @@ public class VoltageControl extends Activity {
 	}
 	
 	private void downloadEmergencyBoot() {
-		if (!ShellInterface.getProcessOutput(C_LIST_SDCARD).contains("proton_emergency_boot.zip")) {
-			Toast.makeText(getBaseContext(), "Emergency boot zip already present!", Toast.LENGTH_LONG).show();
-		}
-		else {
-			ShellInterface.runCommand(C_WGET_E_BOOT);
-			Toast.makeText(this, "Emergency boot zip \"proton_emergency_boot.zip\" saved to sdcard", Toast.LENGTH_LONG).show();
-		}
+		Intent downloadIntent = new Intent(Intent.ACTION_VIEW,
+			Uri.parse("http://dl.andro1d.org/proton_emergency_boot.zip"));
+			startActivity(downloadIntent); 
 	}
 	
 	private void saveBootSettings(String et) {
