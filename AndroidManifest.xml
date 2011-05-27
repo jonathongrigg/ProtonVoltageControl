@@ -23,7 +23,7 @@
         </activity>
 
 	<activity
-	        android:name="ProtonPrefs"
+	        android:name=".ProtonPrefs"
 	        android:label="@string/settings">
 	        <intent-filter>
                 <action android:name="android.intent.action.SETTINGS" />
