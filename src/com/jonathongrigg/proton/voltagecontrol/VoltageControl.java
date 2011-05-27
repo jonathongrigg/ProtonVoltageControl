@@ -146,6 +146,12 @@ public class VoltageControl extends Activity {
         case R.id.menuEmergencyBoot:
             downloadEmergencyBoot();
             return true;
+	case R.id.menuSettings:
+  	    //setContentView(R.layout.settings);
+	    Intent intent = new Intent();
+	    intent.setClass(this, ProtonPrefs.class);
+	    startActivity(intent);
+	    return true;
         default:
             return super.onOptionsItemSelected(item);
         }
