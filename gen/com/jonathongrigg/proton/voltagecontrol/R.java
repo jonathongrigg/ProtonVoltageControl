@@ -70,6 +70,7 @@ public final class R {
         public static final int cpu400=0x7f05000f;
         public static final int cpu800=0x7f050010;
         public static final int download_emergency_boot=0x7f05000b;
+        public static final int download_emergency_boot_short=0x7f050018;
         public static final int prefs_save=0x7f050016;
         public static final int prefs_save_description=0x7f050017;
         public static final int recommended_voltages=0x7f050007;

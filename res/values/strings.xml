@@ -32,5 +32,6 @@
     <string name="cpu1400">1.4 GHz voltage: </string>
     <string name="settings">Preferences</string>
     <string name="prefs_save">Load voltages on reboot</string>
-    <string name="prefs_save_description">The voltages of your choice will automatically be applied with each reboot.</string>    
+    <string name="prefs_save_description">The voltages of your choice will automatically be applied with each reboot.</string>
+    <string name="download_emergency_boot_short">Emergency Boot Zip</string>    
 </resources>
