@@ -33,5 +33,9 @@
     <string name="settings">Preferences</string>
     <string name="prefs_save">Load voltages on reboot</string>
     <string name="prefs_save_description">The voltages of your choice will automatically be applied with each reboot.</string>
-    <string name="download_emergency_boot_short">Emergency Boot Zip</string>    
+    <string name="download_emergency_boot_short">Emergency Boot Zip</string>  
+    <string-array name="theme_array">
+	<item>Theme: black (default)</item>
+	<item>Theme: Proton Red</item>
+    </string-array>  
 </resources>

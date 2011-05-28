@@ -9,9 +9,9 @@ package com.jonathongrigg.proton.voltagecontrol;
 */
 
 import java.io.OutputStreamWriter;
-
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,7 +39,15 @@ public class VoltageControl extends Activity {
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		  	
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+
+        SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
+        int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 1);
+        if(choosenTheme == 0)
+			setContentView(R.layout.main); 
+		else if(choosenTheme == 1)
+			setContentView(R.layout.main_proton_theme);
+                
+        //setContentView(R.layout.main);
         
         if (isSuAvailable = false) {
         	Toast.makeText(getBaseContext(), "ERROR: No Root Access!", Toast.LENGTH_LONG).show();
@@ -53,12 +61,14 @@ public class VoltageControl extends Activity {
     	Button removeBootSettingsButton = (Button) findViewById(R.id.button5);
     	final CheckBox saveOnBootCheckBox = (CheckBox) findViewById(R.id.checkBox1);
     	
-    	//change the bg color of the lower buttons
-    	removeBootSettingsButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-    	defaultVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-    	recommendedVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+    	if(choosenTheme == 1) {
+	    	//change the bg color of the lower buttons
+	    	removeBootSettingsButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+	    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+	    	recommendedVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+    	}
     	
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -133,6 +143,7 @@ public class VoltageControl extends Activity {
             }
         });
     }
+
     
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -146,6 +157,12 @@ public class VoltageControl extends Activity {
         case R.id.menuEmergencyBoot:
             downloadEmergencyBoot();
             return true;
+        case R.id.menuSettings:
+			//setContentView(R.layout.settings);
+			Intent intent = new Intent();
+			intent.setClass(this, ProtonPrefs.class);
+			startActivity(intent);
+			return true;
         default:
             return super.onOptionsItemSelected(item);
         }
