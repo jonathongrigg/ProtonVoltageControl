@@ -10,7 +10,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent" 
-    android:orientation="vertical">
+    android:orientation="vertical" android:background="@drawable/background">
     
 	<!-- from here down scrolls -->
 	<ScrollView android:id="@+id/ScrollView01" android:layout_width="fill_parent" android:layout_height="fill_parent">
@@ -20,9 +20,9 @@
     
     
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true">
-    	<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:shadowRadius="0"/>
-    	<Button android:text="@string/button_recommended_voltages" android:id="@+id/button4" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:shadowRadius="0"/>  
-    	<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:shadowRadius="0"/>
+    	<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="#ffffff" android:shadowRadius="0"/>
+    	<Button android:text="@string/button_recommended_voltages" android:id="@+id/button4" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="#ffffff" android:shadowRadius="0"/>  
+    	<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="#ffffff" android:shadowRadius="0"/>
     </LinearLayout>
      
 
@@ -114,8 +114,8 @@
 	</LinearLayout>
 	
 	<LinearLayout android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:layout_width="match_parent">
-    	<Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:shadowRadius="0" />
-    	<Button android:text="@string/button_remove_boot_settings" android:id="@+id/button5" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:shadowRadius="0" />
+    	<Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:textColor="#ffffff" android:shadowRadius="0" />
+    	<Button android:text="@string/button_remove_boot_settings" android:id="@+id/button5" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:textColor="#ffffff" android:shadowRadius="0" />
     </LinearLayout>
     
     
@@ -123,3 +123,4 @@
 	</ScrollView>
     
 </LinearLayout>
+
