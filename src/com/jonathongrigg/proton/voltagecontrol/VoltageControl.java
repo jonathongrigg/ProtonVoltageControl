@@ -43,10 +43,10 @@ public class VoltageControl extends Activity {
         SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
         int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 1);
         
-        if(choosenTheme == 0)
-			setContentView(R.layout.main_proton_theme); 
-		else if(choosenTheme == 1)
+        if(choosenTheme == 1)
 			setContentView(R.layout.main);
+		else  // using else will guarantee that proton is "default" 
+			setContentView(R.layout.main_proton_theme);
                 
         //setContentView(R.layout.main);
         

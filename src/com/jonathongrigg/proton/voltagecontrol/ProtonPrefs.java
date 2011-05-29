@@ -19,11 +19,10 @@ public class ProtonPrefs extends Activity{
 		SharedPreferences protonPreferences = getSharedPreferences("protonSavedPrefs", 0);
 		int choosenTheme = protonPreferences.getInt(THEME_SETTING, 1);
 		
-		if(choosenTheme == 0)
-			setContentView(R.layout.settings_proton_theme); 
-		else if(choosenTheme == 1)
+		if(choosenTheme == 1)
 			setContentView(R.layout.settings);
-		
+		else  // load default theme
+			setContentView(R.layout.settings_proton_theme);
 		
 				
 		findViewById(R.id.saveSettings).setOnClickListener(mOnConfigClickListener);
