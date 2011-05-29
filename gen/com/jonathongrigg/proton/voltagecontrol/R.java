@@ -43,10 +43,11 @@ public final class R {
         public static final int editText400=0x7f080008;
         public static final int editText800=0x7f080009;
         public static final int linearLayout1=0x7f080002;
-        public static final int menuEmergencyBoot=0x7f080015;
-        public static final int menuSettings=0x7f080014;
+        public static final int menuEmergencyBoot=0x7f080016;
+        public static final int menuSettings=0x7f080015;
         public static final int saveSettings=0x7f080013;
         public static final int theme=0x7f080011;
+        public static final int themeInstruction=0x7f080014;
         public static final int themeSpinner=0x7f080012;
     }
     public static final class layout {
@@ -84,6 +85,7 @@ public final class R {
         public static final int recommended_voltages=0x7f050007;
         public static final int settings=0x7f050015;
         public static final int stock_voltages=0x7f050004;
+        public static final int theme_instruction=0x7f050019;
         public static final int unit_voltage=0x7f05000c;
     }
 }

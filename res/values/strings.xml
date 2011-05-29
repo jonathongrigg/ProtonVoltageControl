@@ -37,5 +37,6 @@
     <string-array name="theme_array">
 	<item>Theme: Proton Red (default)</item>
 	<item>Theme: Black</item>
-    </string-array>  
+    </string-array>
+    <string name="theme_instruction">Please reboot for theme changes to take effect</string>  
 </resources>
