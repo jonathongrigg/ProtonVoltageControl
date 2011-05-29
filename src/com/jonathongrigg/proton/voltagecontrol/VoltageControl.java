@@ -53,7 +53,7 @@ public class VoltageControl extends Activity {
         	Toast.makeText(getBaseContext(), "ERROR: No Root Access!", Toast.LENGTH_LONG).show();
         	finish();
         } else {
-        	//load existing voltatges with assumption that user is using a compatiable kernel
+        	//load existing voltages with assumption that user is using a compatible kernel
         	getExistingVoltages();
         }
         
