@@ -20,9 +20,9 @@ public class ProtonPrefs extends Activity{
 		int choosenTheme = protonPreferences.getInt(THEME_SETTING, 1);
 		
 		if(choosenTheme == 0)
-			setContentView(R.layout.settings); 
+			setContentView(R.layout.settings_proton_theme); 
 		else if(choosenTheme == 1)
-			setContentView(R.layout.settings_proton_theme);
+			setContentView(R.layout.settings);
 		
 		
 				

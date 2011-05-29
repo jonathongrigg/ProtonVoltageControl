@@ -42,10 +42,11 @@ public class VoltageControl extends Activity {
 
         SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
         int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 1);
+        
         if(choosenTheme == 0)
-			setContentView(R.layout.main); 
+			setContentView(R.layout.main_proton_theme); 
 		else if(choosenTheme == 1)
-			setContentView(R.layout.main_proton_theme);
+			setContentView(R.layout.main);
                 
         //setContentView(R.layout.main);
         
@@ -64,7 +65,7 @@ public class VoltageControl extends Activity {
     	Button removeBootSettingsButton = (Button) findViewById(R.id.button5);
     	final CheckBox saveOnBootCheckBox = (CheckBox) findViewById(R.id.checkBox1);
     	
-    	if(choosenTheme == 1) {
+    	if(choosenTheme == 0) {
 	    	//change the bg color of the lower buttons
 	    	removeBootSettingsButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);

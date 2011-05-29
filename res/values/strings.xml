@@ -35,7 +35,7 @@
     <string name="prefs_save_description">The voltages of your choice will automatically be applied with each reboot.</string>
     <string name="download_emergency_boot_short">Emergency Boot Zip</string>  
     <string-array name="theme_array">
-	<item>Theme: black (default)</item>
-	<item>Theme: Proton Red</item>
+	<item>Theme: Proton Red (default)</item>
+	<item>Theme: Black</item>
     </string-array>  
 </resources>
