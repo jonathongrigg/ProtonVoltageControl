@@ -52,6 +52,9 @@ public class VoltageControl extends Activity {
         if (isSuAvailable = false) {
         	Toast.makeText(getBaseContext(), "ERROR: No Root Access!", Toast.LENGTH_LONG).show();
         	finish();
+        } else {
+        	//load existing voltatges with assumption that user is using a compatiable kernel
+        	getExistingVoltages();
         }
         
     	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
