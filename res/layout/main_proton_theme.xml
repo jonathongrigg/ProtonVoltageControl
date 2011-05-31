@@ -16,13 +16,6 @@
     <TextView android:id="@+id/tuna" android:layout_height="wrap_content" android:layout_width="fill_parent" />
 	<TextView android:id="@+id/tuna2" android:layout_height="wrap_content" android:layout_width="fill_parent" />
  -->
-
-    
-	<!-- from here down scrolls -->
-	<ScrollView android:id="@+id/ScrollView01" android:layout_width="fill_parent" android:layout_height="fill_parent">
-			
-			<!--  Need a new linear layout just below scrollview for it to work -->
-			<LinearLayout android:id="@+id/LinearLayout02" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical">
     
     
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:layout_gravity="top">
@@ -91,12 +84,9 @@
     </LinearLayout>
 
 	
-	<LinearLayout android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:layout_width="match_parent" android:layout_marginTop="50sp">
+	<LinearLayout android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:layout_width="match_parent" android:layout_marginTop="45sp">
     	<Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="85px" android:layout_weight="1" android:layout_width="80px" android:textColor="#ffffff" android:shadowRadius="0" />
     </LinearLayout>
-    
-    
-</LinearLayout>
-	</ScrollView>
+
     
 </LinearLayout>
