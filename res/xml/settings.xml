@@ -9,16 +9,15 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="100mhz"
 		android:summary="Set your custom voltage for 100MHz"/>
+<!-- 	Programmed but not used:	tuna:units=""                                                -->
 
 	<com.jonathongrigg.proton.voltagecontrol.SeekBarDialogPreference
 		android:key="seekBar200"
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="200mhz"
 		android:summary="Set your custom voltage for 200MHz"/>
 
@@ -27,7 +26,6 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="400mhz"
 		android:summary="Set your custom voltage for 400MHz"/>
 
@@ -36,7 +34,6 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="800mhz"
 		android:summary="Set your custom voltage for 800MHz"/>
 		
@@ -45,7 +42,6 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="1000mhz"
 		android:summary="Set your custom voltage for 1GHz"/>
 
@@ -54,7 +50,6 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="1200nhz"
 		android:summary="Set your custom voltage for 1.2GHz"/>
 		
@@ -63,7 +58,6 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="1300mhz"
 		android:summary="Set your custom voltage for 1.3GHz"/>
 
@@ -72,8 +66,8 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1500"
 		tuna:stepSize="25"
-		tuna:units=""
 		android:title="1400mhz"
 		android:summary="Set your custom voltage for 1.4GHz"/>
 
 </PreferenceScreen>
+
