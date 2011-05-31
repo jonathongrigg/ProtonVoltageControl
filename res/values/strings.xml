@@ -11,13 +11,13 @@
 <resources>
     <string name="app_name">Proton</string>
     <string name="app_version">1.0</string>
-    <string name="button_get_existing_voltages">Existing Voltages</string>
+    <string name="button_get_existing_voltages">Existing</string>
     <string name="button_apply">Apply</string>
     <string name="stock_voltages">1450 1400 1350 1250 1200 1050 950 950</string>
-    <string name="button_default_voltages">Default Voltages</string>
+    <string name="button_default_voltages">Stock</string>
     <string name="app_name_long">Proton Voltage Control</string>
     <string name="recommended_voltages">1475 1400 1330 1230 1180 1030 930 930</string>
-    <string name="button_recommended_voltages">Suggested Voltages</string>
+    <string name="button_recommended_voltages">Suggested</string>
     <string name="button_remove_boot_settings">Remove Boot Settings</string>
     <string name="checkbox_save_on_boot">Save on Boot</string>
     <string name="download_emergency_boot">Download Emergency Boot Zip</string>
@@ -38,5 +38,7 @@
 	<item>Theme: Proton Red (default)</item>
 	<item>Theme: Black</item>
     </string-array>
-    <string name="theme_instruction">Please reboot for theme changes to take effect</string>  
+    <string name="theme_instruction">Please reboot for theme changes to take effect</string>
+    <string name="menu_voltage">Custom Voltages</string>
+    <string name="button_custom_voltage">Custom</string>
 </resources>

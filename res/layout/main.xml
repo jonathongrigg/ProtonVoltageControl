@@ -11,6 +11,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent" 
     android:orientation="vertical">
+<!--  for debugging    
+    <TextView android:id="@+id/tuna" android:layout_height="wrap_content" android:layout_width="fill_parent" />
+	<TextView android:id="@+id/tuna2" android:layout_height="wrap_content" android:layout_width="fill_parent" />
+ -->
     
 	<!-- from here down scrolls -->
 	<ScrollView android:id="@+id/ScrollView01" android:layout_width="fill_parent" android:layout_height="fill_parent">
@@ -20,9 +24,10 @@
     
     
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true">
-    	<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:shadowRadius="0"/>
-    	<Button android:text="@string/button_recommended_voltages" android:id="@+id/button4" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:shadowRadius="0"/>  
-    	<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="wrap_content" android:layout_width="match_parent" android:shadowRadius="0"/>
+    	<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="92px" android:textColor="#ffffff" android:shadowRadius="0"/>
+		<Button android:text="@string/button_custom_voltage" android:id="@+id/custom_button" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="92px" android:textColor="#ffffff" android:shadowRadius="0"/>
+    	<Button android:text="@string/button_recommended_voltages" android:id="@+id/button4" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="110px" android:textColor="#ffffff" android:shadowRadius="0"/>  
+    	<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="77px" android:textColor="#ffffff" android:shadowRadius="0"/>
     </LinearLayout>
      
 
@@ -32,7 +37,7 @@
     	<TextView android:text="@string/cpu100" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText100" android:layout_height="wrap_content" 
-    		android:text="" android:hint="925" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="925" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
     		android:textSize="30px" />
     </LinearLayout>
@@ -42,7 +47,7 @@
     	<TextView android:text="@string/cpu200" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText200" android:layout_height="wrap_content" 
-    		android:text="" android:hint="925" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="925" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
     		android:textSize="30px" />
     </LinearLayout>
@@ -52,7 +57,7 @@
     	<TextView android:text="@string/cpu400" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText400" android:layout_height="wrap_content" 
-    		android:text="" android:hint="1050" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="1050" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
     		android:textSize="30px" />
     </LinearLayout>
@@ -63,7 +68,7 @@
     	<TextView android:text="@string/cpu800" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText800" android:layout_height="wrap_content" 
-    		android:text="" android:hint="1200" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="1200" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
     		android:textSize="30px" />
     </LinearLayout>
@@ -73,7 +78,7 @@
     	<TextView android:text="@string/cpu1000" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText1000" android:layout_height="wrap_content" 
-    		android:text="" android:hint="1275" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="1275" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
     		android:textSize="30px" />
     </LinearLayout>
@@ -83,7 +88,7 @@
     	<TextView android:text="@string/cpu1200" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText1200" android:layout_height="wrap_content" 
-    		android:text="" android:hint="1325" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="1325" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px" 
     		android:textSize="30px" />
     </LinearLayout>
@@ -93,7 +98,7 @@
     	<TextView android:text="@string/cpu1300" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText1300" android:layout_height="wrap_content" 
-    		android:text="" android:hint="1400" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="1400" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip"  android:paddingLeft="10px"
     		android:textSize="30px" />
     </LinearLayout>
@@ -103,7 +108,7 @@
     	<TextView android:text="@string/cpu1400" android:layout_height="wrap_content" android:layout_width="150dip" 
     		android:textSize="28px" />
     	<EditText android:id="@+id/editText1400" android:layout_height="wrap_content" 
-    		android:text="" android:hint="1500" android:inputType="phone" android:layout_width="61dip"/>
+    		android:text="" android:hint="1500" android:inputType="phone" android:layout_width="66dip"/>
     	<TextView android:text="@string/unit_voltage" android:layout_height="wrap_content" android:layout_width="65dip" android:paddingLeft="10px"
     		android:textSize="30px" />
     </LinearLayout>
@@ -114,8 +119,8 @@
 	</LinearLayout>
 	
 	<LinearLayout android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:layout_width="match_parent">
-    	<Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:shadowRadius="0" />
-    	<Button android:text="@string/button_remove_boot_settings" android:id="@+id/button5" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:shadowRadius="0" />
+    	<Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="85px" android:layout_weight="1" android:layout_width="80px" android:textColor="#ffffff" android:shadowRadius="0" />
+    	<Button android:text="@string/button_remove_boot_settings" android:id="@+id/button5" android:layout_height="85px" android:layout_weight="1" android:layout_width="175px" android:textColor="#ffffff" android:shadowRadius="0" />
     </LinearLayout>
     
     
