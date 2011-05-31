@@ -30,6 +30,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 public class VoltageControl extends Activity {
+	// user entered custom voltages 100mhz-1.4ghz
 	int seekBar100;
 	int seekBar200;
 	int seekBar400;
@@ -41,7 +42,7 @@ public class VoltageControl extends Activity {
 	
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
-	protected static final String C_LIST_INIT_D = "ls /etc/init.d/";
+	//protected static final String C_LIST_INIT_D = "ls /etc/init.d/";    // moved to ProtonPrefs
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
@@ -75,13 +76,11 @@ public class VoltageControl extends Activity {
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
     	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
-    	Button removeBootSettingsButton = (Button) findViewById(R.id.button5);
     	Button customVoltagesButton = (Button) findViewById(R.id.custom_button);
-    	final CheckBox saveOnBootCheckBox = (CheckBox) findViewById(R.id.checkBox1);
+
 
     	//change the bg color on buttons to match proton red IF selected
     	if(choosenTheme == 0) {
-	    	removeBootSettingsButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
@@ -116,9 +115,11 @@ public class VoltageControl extends Activity {
             	placeholder = (EditText) findViewById(R.id.editText100);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 100mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            		
-            
-            	if (saveOnBootCheckBox.isChecked()) {
+            	
+            	//check the prefs to see if the user wants voltages in the init
+            	SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
+            	boolean saveBoot = settings.getBoolean(ProtonPrefs.SAVE_ON_BOOT, false);
+            	if (saveBoot) {   //if user wants voltages saved
             		if (finalVoltage.length() > 27) {
                 		ShellInterface.runCommand(buildUvCommand(finalVoltage));
                 		saveBootSettings(finalVoltage);
@@ -155,9 +156,6 @@ public class VoltageControl extends Activity {
             	  case R.id.custom_button:
             		  customVoltages();
             	      break;
-            	  case R.id.button5:
-            		  removeBootSettings();
-            	      break;
             	}
             }
         };
@@ -165,7 +163,6 @@ public class VoltageControl extends Activity {
     	existingVoltagesButton.setOnClickListener(listener);
     	defaultVoltagesButton.setOnClickListener(listener);
     	recommendedVoltagesButton.setOnClickListener(listener);
-    	removeBootSettingsButton.setOnClickListener(listener);
     	customVoltagesButton.setOnClickListener(listener);
     	
     }
@@ -390,16 +387,5 @@ public class VoltageControl extends Activity {
 		Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
 	}
 	
-	private void removeBootSettings() {
-		if (!ShellInterface.getProcessOutput(C_LIST_INIT_D).contains("proton_voltage_control")) {
-			Toast.makeText(getBaseContext(), "Error: No Saved Boot Settings Present", Toast.LENGTH_LONG).show();
-		}
-		else {
-			ShellInterface.runCommand("busybox mount -o remount,rw  /system");
-			ShellInterface.runCommand("rm /etc/init.d/proton_voltage_control");
-			ShellInterface.runCommand("busybox mount -o remount,ro  /system");
-			Toast.makeText(this, "Removed settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
-		}
-	}
 	
 }

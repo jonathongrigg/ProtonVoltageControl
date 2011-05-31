@@ -41,4 +41,6 @@
     <string name="theme_instruction">Please reboot for theme changes to take effect</string>
     <string name="menu_voltage">Custom Voltages</string>
     <string name="button_custom_voltage">Custom</string>
+    <string name="checkbox_prefs_reboot">Reload voltages on reboot</string>
+    <string name="button_prefs_save">Save Settings</string>
 </resources>

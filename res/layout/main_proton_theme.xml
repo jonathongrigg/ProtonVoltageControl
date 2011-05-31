@@ -115,14 +115,10 @@
     		android:textSize="30px" />
     </LinearLayout>
 
-	<!--  save on boot? -->
-	<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:gravity="center_vertical|right" android:paddingRight="23px">
-		<CheckBox android:text="Save on Boot" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-	</LinearLayout>
+
 	
 	<LinearLayout android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:layout_width="match_parent">
     	<Button android:text="@string/button_apply" android:id="@+id/button1" android:layout_height="85px" android:layout_weight="1" android:layout_width="80px" android:textColor="#ffffff" android:shadowRadius="0" />
-    	<Button android:text="@string/button_remove_boot_settings" android:id="@+id/button5" android:layout_height="85px" android:layout_weight="1" android:layout_width="175px" android:textColor="#ffffff" android:shadowRadius="0" />
     </LinearLayout>
     
     
