@@ -17,23 +17,13 @@ import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.PopupWindow;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 public class VoltageControl extends Activity {
@@ -62,7 +52,7 @@ public class VoltageControl extends Activity {
         
         //lookup, then load selected theme OR default is 'proton red'
         SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
-        int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 1);
+        int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 0);
         if(choosenTheme == 1)
 			setContentView(R.layout.main);
 		else  // using else will guarantee that proton is "default" 
@@ -87,7 +77,7 @@ public class VoltageControl extends Activity {
 
 
     	//change the bg color on buttons to match proton red IF selected
-    	if(choosenTheme == 0) {
+    	if(choosenTheme != 1) {
 	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);

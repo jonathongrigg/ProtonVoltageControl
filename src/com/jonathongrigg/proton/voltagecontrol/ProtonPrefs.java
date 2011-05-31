@@ -23,8 +23,7 @@ public class ProtonPrefs extends Activity{
 		super.onCreate(savedInstanceState);
 		
 		SharedPreferences protonPreferences = getSharedPreferences("protonSavedPrefs", 0);
-		int choosenTheme = protonPreferences.getInt(THEME_SETTING, 1);
-		
+		int choosenTheme = protonPreferences.getInt(THEME_SETTING, 0);  // throws a '0' if no saved preferences
 		if(choosenTheme == 1)
 			setContentView(R.layout.settings);
 		else  { // load default theme
