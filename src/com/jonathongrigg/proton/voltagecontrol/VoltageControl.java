@@ -10,20 +10,27 @@ package com.jonathongrigg.proton.voltagecontrol;
 
 import java.io.OutputStreamWriter;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -238,8 +245,12 @@ public class VoltageControl extends Activity {
     }  
     
     private void customVoltages() {
-    	findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
     	loadSliderData();
+	    	if(seekBar1400 == 0 || seekBar1300 == 0 || seekBar1200 == 0 || seekBar1000 == 0 || seekBar800 == 0 || seekBar400 == 0 || seekBar200 == 0 || seekBar100 == 0) {
+	    		AlertWindow(getString(R.string.alert_no_custom_uv));
+	    	} else {
+	    		findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
+	    	}
     	
     	// Edit text boxes
     	TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);
@@ -390,6 +401,19 @@ public class VoltageControl extends Activity {
 		ShellInterface.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/init.d/proton_voltage_control");
 		ShellInterface.runCommand("busybox mount -o remount,ro  /system");
 		Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+	}
+	
+	public void AlertWindow(String et){
+		String AlertMsg = et;
+		
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        alertbox.setMessage(AlertMsg);
+        alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+
+            }
+        });
+        alertbox.show();
 	}
 	
 	
