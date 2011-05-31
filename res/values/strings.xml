@@ -43,4 +43,6 @@
     <string name="button_custom_voltage">Custom</string>
     <string name="checkbox_prefs_reboot">Reload voltages on reboot</string>
     <string name="button_prefs_save">Save Settings</string>
+    <string name="prefs_heading_theme">Select your theme</string>
+    <string name="prefs_heading_user">User preferencess</string>
 </resources>

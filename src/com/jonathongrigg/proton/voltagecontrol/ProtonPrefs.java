@@ -27,9 +27,10 @@ public class ProtonPrefs extends Activity{
 		
 		if(choosenTheme == 1)
 			setContentView(R.layout.settings);
-		else  // load default theme
+		else  { // load default theme
 			setContentView(R.layout.settings_proton_theme);
-		
+			findViewById(R.id.saveSettings).getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+		}		
 		
 				
 		findViewById(R.id.saveSettings).setOnClickListener(mOnConfigClickListener);
