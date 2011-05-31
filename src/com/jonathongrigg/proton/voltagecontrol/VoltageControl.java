@@ -91,28 +91,28 @@ public class VoltageControl extends Activity {
     	
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	EditText placeholder = (EditText) findViewById(R.id.editText1400);
+            	TextView placeholder = (TextView) findViewById(R.id.viewText1400);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1.4ghz", Toast.LENGTH_LONG).show(); }
             		String finalVoltage = placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText1300);
+            	placeholder = (TextView) findViewById(R.id.viewText1300);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1.3ghz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText1200);
+            	placeholder = (TextView) findViewById(R.id.viewText1200);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1.2ghz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText1000);
+            	placeholder = (TextView) findViewById(R.id.viewText1000);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1ghz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText800);
+            	placeholder = (TextView) findViewById(R.id.viewText800);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 800mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText400);
+            	placeholder = (TextView) findViewById(R.id.viewText400);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 400mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText200);
+            	placeholder = (TextView) findViewById(R.id.viewText200);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 200mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText100);
+            	placeholder = (TextView) findViewById(R.id.viewText100);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 100mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
             	
@@ -148,10 +148,10 @@ public class VoltageControl extends Activity {
             		  getExistingVoltages();
             	      break;
             	  case R.id.button3:
-            		  recommendedVoltages();;
+            		  defaultVoltages();
             	      break;
             	  case R.id.button4:
-            		  defaultVoltages();
+            		  recommendedVoltages();
             	      break;
             	  case R.id.custom_button:
             		  customVoltages();
@@ -211,15 +211,16 @@ public class VoltageControl extends Activity {
     }
     
     private void defaultVoltages() {
+    	findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
     	// Edit text boxes
-        EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
-        EditText cpu1300 = (EditText)findViewById(R.id.editText1300);	// 1300mhz
-        EditText cpu1200 = (EditText)findViewById(R.id.editText1200);	// 1200mhz
-        EditText cpu1000 = (EditText)findViewById(R.id.editText1000);	// 1000mhz
-        EditText cpu800 = (EditText)findViewById(R.id.editText800);		// 800mhz
-        EditText cpu400 = (EditText)findViewById(R.id.editText400);		// 400mhz
-        EditText cpu200 = (EditText)findViewById(R.id.editText200);		// 200mhz
-        EditText cpu100 = (EditText)findViewById(R.id.editText100);		// 100mhz
+        TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);	// 1400mhz
+        TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);	// 1300mhz
+        TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);	// 1200mhz
+        TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);	// 1000mhz
+        TextView cpu800 = (TextView)findViewById(R.id.viewText800);		// 800mhz
+        TextView cpu400 = (TextView)findViewById(R.id.viewText400);		// 400mhz
+        TextView cpu200 = (TextView)findViewById(R.id.viewText200);		// 200mhz
+        TextView cpu100 = (TextView)findViewById(R.id.viewText100);		// 100mhz
         
         // Strings
         String dvString = this.getString(R.string.stock_voltages);
@@ -237,17 +238,19 @@ public class VoltageControl extends Activity {
     }  
     
     private void customVoltages() {
+    	findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
     	loadSliderData();
     	
     	// Edit text boxes
-        EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
-        EditText cpu1300 = (EditText)findViewById(R.id.editText1300);	// 1300mhz
-        EditText cpu1200 = (EditText)findViewById(R.id.editText1200);	// 1200mhz
-        EditText cpu1000 = (EditText)findViewById(R.id.editText1000);	// 1000mhz
-        EditText cpu800 = (EditText)findViewById(R.id.editText800);		// 800mhz
-        EditText cpu400 = (EditText)findViewById(R.id.editText400);		// 400mhz
-        EditText cpu200 = (EditText)findViewById(R.id.editText200);		// 200mhz
-        EditText cpu100 = (EditText)findViewById(R.id.editText100);		// 100mhz
+    	TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);
+    	TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);
+    	TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);
+    	TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);
+    	TextView cpu800 = (TextView)findViewById(R.id.viewText800);
+    	TextView cpu400 = (TextView)findViewById(R.id.viewText400);
+    	TextView cpu200 = (TextView)findViewById(R.id.viewText200);
+    	TextView cpu100 = (TextView)findViewById(R.id.viewText100);
+        
         
         
         // Load data from custom voltage menu
@@ -262,15 +265,16 @@ public class VoltageControl extends Activity {
     } 
 
     private void recommendedVoltages() {
+    	findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
     	// Edit text boxes
-        EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
-        EditText cpu1300 = (EditText)findViewById(R.id.editText1300);	// 1300mhz
-        EditText cpu1200 = (EditText)findViewById(R.id.editText1200);	// 1200mhz
-        EditText cpu1000 = (EditText)findViewById(R.id.editText1000);	// 1000mhz
-        EditText cpu800 = (EditText)findViewById(R.id.editText800);		// 800mhz
-        EditText cpu400 = (EditText)findViewById(R.id.editText400);		// 400mhz
-        EditText cpu200 = (EditText)findViewById(R.id.editText200);		// 200mhz
-        EditText cpu100 = (EditText)findViewById(R.id.editText100);		// 100mhz
+        TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);	// 1400mhz
+        TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);	// 1300mhz
+        TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);	// 1200mhz
+        TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);	// 1000mhz
+        TextView cpu800 = (TextView)findViewById(R.id.viewText800);		// 800mhz
+        TextView cpu400 = (TextView)findViewById(R.id.viewText400);		// 400mhz
+        TextView cpu200 = (TextView)findViewById(R.id.viewText200);		// 200mhz
+        TextView cpu100 = (TextView)findViewById(R.id.viewText100);		// 100mhz
         
         // Strings
         String rvString = this.getString(R.string.recommended_voltages);
@@ -288,6 +292,7 @@ public class VoltageControl extends Activity {
     }
     
     private void getExistingVoltages() {
+    	findViewById(R.id.button1).setVisibility(View.GONE);  // existing values do not need button
         String existingVoltagesValue = null;
         String[] tableValues;
         StringBuilder voltages = new StringBuilder();
@@ -299,49 +304,49 @@ public class VoltageControl extends Activity {
         	
         	//1400mhz
         	if (i == 1) { 		
-                EditText cpu1400 = (EditText)findViewById(R.id.editText1400);
+        		TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);
         		cpu1400.setText(tableValues[i]);
         	}
         	
         	//1300mhz
         	if (i == 4) { 		
-                EditText cpu1300 = (EditText)findViewById(R.id.editText1300);
+        		TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);
         		cpu1300.setText(tableValues[i]);
         	}
         	
         	//1200mhz
         	if (i == 7) { 		
-                EditText cpu1200 = (EditText)findViewById(R.id.editText1200);
+        		TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);
         		cpu1200.setText(tableValues[i]);
         	}
         	
         	//1000mhz
         	if (i == 10) { 		
-                EditText cpu1000 = (EditText)findViewById(R.id.editText1000);
+        		TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);
         		cpu1000.setText(tableValues[i]);
         	}
         	
         	//800mhz
         	if (i == 13) { 		
-                EditText cpu800 = (EditText)findViewById(R.id.editText800);
+        		TextView cpu800 = (TextView)findViewById(R.id.viewText800);
         		cpu800.setText(tableValues[i]);
         	}
         	
         	//400mhz
         	if (i == 16) { 		
-                EditText cpu400 = (EditText)findViewById(R.id.editText400);
+        		TextView cpu400 = (TextView)findViewById(R.id.viewText400);
         		cpu400.setText(tableValues[i]);
         	}
         	
         	//200mhz
         	if (i == 19) { 		
-                EditText cpu200 = (EditText)findViewById(R.id.editText200);
+        		TextView cpu200 = (TextView)findViewById(R.id.viewText200);
         		cpu200.setText(tableValues[i]);
         	}
         	
         	//100mhz
         	if (i == 22) { 		
-                EditText cpu100 = (EditText)findViewById(R.id.editText100);
+        		TextView cpu100 = (TextView)findViewById(R.id.viewText100);
         		cpu100.setText(tableValues[i]);
         	}
 
