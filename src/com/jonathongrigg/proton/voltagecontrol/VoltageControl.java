@@ -10,6 +10,8 @@ package com.jonathongrigg.proton.voltagecontrol;
 
 import java.io.OutputStreamWriter;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -21,15 +23,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class VoltageControl extends Activity {
+	// user entered custom voltages 100mhz-1.4ghz
+	int seekBar100;
+	int seekBar200;
+	int seekBar400;
+	int seekBar800;
+	int seekBar1000;
+	int seekBar1200;
+	int seekBar1300;
+	int seekBar1400;
 	
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
-	protected static final String C_LIST_INIT_D = "ls /etc/init.d/";
+	//protected static final String C_LIST_INIT_D = "ls /etc/init.d/";    // moved to ProtonPrefs
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
@@ -39,17 +49,17 @@ public class VoltageControl extends Activity {
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		  	
         super.onCreate(savedInstanceState);
-
+        
+        //lookup, then load selected theme OR default is 'proton red'
         SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
-        int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 1);
-        
-        if(choosenTheme == 0)
-			setContentView(R.layout.main_proton_theme); 
-		else if(choosenTheme == 1)
+        int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 0);
+        if(choosenTheme == 1)
 			setContentView(R.layout.main);
+		else  // using else will guarantee that proton is "default" 
+			setContentView(R.layout.main_proton_theme);
                 
-        //setContentView(R.layout.main);
-        
+
+        // Error checking, if pass SU check then load kernel voltages
         if (isSuAvailable = false) {
         	Toast.makeText(getBaseContext(), "ERROR: No Root Access!", Toast.LENGTH_LONG).show();
         	finish();
@@ -58,51 +68,55 @@ public class VoltageControl extends Activity {
         	getExistingVoltages();
         }
         
+        //declare all buttons
     	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
     	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
-    	Button removeBootSettingsButton = (Button) findViewById(R.id.button5);
-    	final CheckBox saveOnBootCheckBox = (CheckBox) findViewById(R.id.checkBox1);
-    	
-    	if(choosenTheme == 0) {
-	    	//change the bg color of the lower buttons
-	    	removeBootSettingsButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+    	Button customVoltagesButton = (Button) findViewById(R.id.custom_button);
+
+
+    	//change the bg color on buttons to match proton red IF selected
+    	if(choosenTheme != 1) {
 	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	recommendedVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+	    	customVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
     	}
+
     	
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	EditText placeholder = (EditText) findViewById(R.id.editText1400);
+            	TextView placeholder = (TextView) findViewById(R.id.viewText1400);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1.4ghz", Toast.LENGTH_LONG).show(); }
             		String finalVoltage = placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText1300);
+            	placeholder = (TextView) findViewById(R.id.viewText1300);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1.3ghz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText1200);
+            	placeholder = (TextView) findViewById(R.id.viewText1200);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1.2ghz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText1000);
+            	placeholder = (TextView) findViewById(R.id.viewText1000);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1ghz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText800);
+            	placeholder = (TextView) findViewById(R.id.viewText800);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 800mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText400);
+            	placeholder = (TextView) findViewById(R.id.viewText400);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 400mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText200);
+            	placeholder = (TextView) findViewById(R.id.viewText200);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 200mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            	placeholder = (EditText) findViewById(R.id.editText100);
+            	placeholder = (TextView) findViewById(R.id.viewText100);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 100mhz", Toast.LENGTH_LONG).show(); }
             		finalVoltage = finalVoltage + " " + placeholder.getText().toString();
-            		
-            
-            	if (saveOnBootCheckBox.isChecked()) {
+            	
+            	//check the prefs to see if the user wants voltages in the init
+            	SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
+            	boolean saveBoot = settings.getBoolean(ProtonPrefs.SAVE_ON_BOOT, false);
+            	if (saveBoot) {   //if user wants voltages saved
             		if (finalVoltage.length() > 27) {
                 		ShellInterface.runCommand(buildUvCommand(finalVoltage));
                 		saveBootSettings(finalVoltage);
@@ -123,31 +137,46 @@ public class VoltageControl extends Activity {
             }
         });
     	
-        existingVoltagesButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                getExistingVoltages();
-            }
-        });
         
-        defaultVoltagesButton.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             public void onClick(View v) {
-            	defaultVoltages();
+            	switch(v.getId()) {
+            	  case R.id.button2: 
+            		  getExistingVoltages();
+            	      break;
+            	  case R.id.button3:
+            		  defaultVoltages();
+            	      break;
+            	  case R.id.button4:
+            		  recommendedVoltages();
+            	      break;
+            	  case R.id.custom_button:
+            		  customVoltages();
+            	      break;
+            	}
             }
-        });
-        
-        recommendedVoltagesButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                recommendedVoltages();     		
-            }
-        });
-        
-        removeBootSettingsButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                removeBootSettings();
-            }
-        });
+        };
+                
+    	existingVoltagesButton.setOnClickListener(listener);
+    	defaultVoltagesButton.setOnClickListener(listener);
+    	recommendedVoltagesButton.setOnClickListener(listener);
+    	customVoltagesButton.setOnClickListener(listener);
+    	
     }
 
+    private void loadSliderData() {
+    	//load slider data from VoltageControlSlider
+    	SharedPreferences mySharedPreferences = getSharedPreferences(
+                        "protonVoltages", Activity.MODE_PRIVATE);
+        seekBar100 = mySharedPreferences.getInt("seekBar100", 0);
+        seekBar200 = mySharedPreferences.getInt("seekBar200", 0);
+        seekBar400 = mySharedPreferences.getInt("seekBar400", 0);
+        seekBar800 = mySharedPreferences.getInt("seekBar800", 0);
+        seekBar1000 = mySharedPreferences.getInt("seekBar1000", 0);
+        seekBar1200 = mySharedPreferences.getInt("seekBar1200", 0);
+        seekBar1300 = mySharedPreferences.getInt("seekBar1300", 0);
+        seekBar1400 = mySharedPreferences.getInt("seekBar1400", 0);
+}
     
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -163,9 +192,15 @@ public class VoltageControl extends Activity {
             return true;
         case R.id.menuSettings:
 			//setContentView(R.layout.settings);
-			Intent intent = new Intent();
-			intent.setClass(this, ProtonPrefs.class);
-			startActivity(intent);
+			Intent prefs = new Intent();
+			prefs.setClass(this, ProtonPrefs.class);
+			startActivity(prefs);
+			return true;
+        case R.id.menuCustomVoltage:
+			//setContentView(R.layout.seekbardialogpreference_layout);
+			Intent custVolt = new Intent();
+			custVolt.setClass(this, VoltageControlSlider.class);
+			startActivity(custVolt);
 			return true;
         default:
             return super.onOptionsItemSelected(item);
@@ -173,15 +208,16 @@ public class VoltageControl extends Activity {
     }
     
     private void defaultVoltages() {
+    	findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
     	// Edit text boxes
-        EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
-        EditText cpu1300 = (EditText)findViewById(R.id.editText1300);	// 1300mhz
-        EditText cpu1200 = (EditText)findViewById(R.id.editText1200);	// 1200mhz
-        EditText cpu1000 = (EditText)findViewById(R.id.editText1000);	// 1000mhz
-        EditText cpu800 = (EditText)findViewById(R.id.editText800);		// 800mhz
-        EditText cpu400 = (EditText)findViewById(R.id.editText400);		// 400mhz
-        EditText cpu200 = (EditText)findViewById(R.id.editText200);		// 200mhz
-        EditText cpu100 = (EditText)findViewById(R.id.editText100);		// 100mhz
+        TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);	// 1400mhz
+        TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);	// 1300mhz
+        TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);	// 1200mhz
+        TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);	// 1000mhz
+        TextView cpu800 = (TextView)findViewById(R.id.viewText800);		// 800mhz
+        TextView cpu400 = (TextView)findViewById(R.id.viewText400);		// 400mhz
+        TextView cpu200 = (TextView)findViewById(R.id.viewText200);		// 200mhz
+        TextView cpu100 = (TextView)findViewById(R.id.viewText100);		// 100mhz
         
         // Strings
         String dvString = this.getString(R.string.stock_voltages);
@@ -197,17 +233,49 @@ public class VoltageControl extends Activity {
         cpu200.setText(dv[6]);
         cpu100.setText(dv[7]);
     }  
+    
+    private void customVoltages() {
+    	loadSliderData();
+	    	if(seekBar1400 == 0 || seekBar1300 == 0 || seekBar1200 == 0 || seekBar1000 == 0 || seekBar800 == 0 || seekBar400 == 0 || seekBar200 == 0 || seekBar100 == 0) {
+	    		AlertWindow(getString(R.string.alert_no_custom_uv));
+	    	} else {
+	    		findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
+	    	}
+    	
+    	// Edit text boxes
+    	TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);
+    	TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);
+    	TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);
+    	TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);
+    	TextView cpu800 = (TextView)findViewById(R.id.viewText800);
+    	TextView cpu400 = (TextView)findViewById(R.id.viewText400);
+    	TextView cpu200 = (TextView)findViewById(R.id.viewText200);
+    	TextView cpu100 = (TextView)findViewById(R.id.viewText100);
+        
+        
+        
+        // Load data from custom voltage menu
+        cpu1400.setText(Integer.toString(seekBar1400));
+        cpu1300.setText(Integer.toString(seekBar1300));
+        cpu1200.setText(Integer.toString(seekBar1200));
+        cpu1000.setText(Integer.toString(seekBar1000));
+        cpu800.setText(Integer.toString(seekBar800));
+        cpu400.setText(Integer.toString(seekBar400));
+        cpu200.setText(Integer.toString(seekBar200));
+        cpu100.setText(Integer.toString(seekBar100));
+    } 
 
     private void recommendedVoltages() {
+    	findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
     	// Edit text boxes
-        EditText cpu1400 = (EditText)findViewById(R.id.editText1400);	// 1400mhz
-        EditText cpu1300 = (EditText)findViewById(R.id.editText1300);	// 1300mhz
-        EditText cpu1200 = (EditText)findViewById(R.id.editText1200);	// 1200mhz
-        EditText cpu1000 = (EditText)findViewById(R.id.editText1000);	// 1000mhz
-        EditText cpu800 = (EditText)findViewById(R.id.editText800);		// 800mhz
-        EditText cpu400 = (EditText)findViewById(R.id.editText400);		// 400mhz
-        EditText cpu200 = (EditText)findViewById(R.id.editText200);		// 200mhz
-        EditText cpu100 = (EditText)findViewById(R.id.editText100);		// 100mhz
+        TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);	// 1400mhz
+        TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);	// 1300mhz
+        TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);	// 1200mhz
+        TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);	// 1000mhz
+        TextView cpu800 = (TextView)findViewById(R.id.viewText800);		// 800mhz
+        TextView cpu400 = (TextView)findViewById(R.id.viewText400);		// 400mhz
+        TextView cpu200 = (TextView)findViewById(R.id.viewText200);		// 200mhz
+        TextView cpu100 = (TextView)findViewById(R.id.viewText100);		// 100mhz
         
         // Strings
         String rvString = this.getString(R.string.recommended_voltages);
@@ -225,6 +293,7 @@ public class VoltageControl extends Activity {
     }
     
     private void getExistingVoltages() {
+    	findViewById(R.id.button1).setVisibility(View.GONE);  // existing values do not need button
         String existingVoltagesValue = null;
         String[] tableValues;
         StringBuilder voltages = new StringBuilder();
@@ -236,49 +305,49 @@ public class VoltageControl extends Activity {
         	
         	//1400mhz
         	if (i == 1) { 		
-                EditText cpu1400 = (EditText)findViewById(R.id.editText1400);
+        		TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);
         		cpu1400.setText(tableValues[i]);
         	}
         	
         	//1300mhz
         	if (i == 4) { 		
-                EditText cpu1300 = (EditText)findViewById(R.id.editText1300);
+        		TextView cpu1300 = (TextView)findViewById(R.id.viewText1300);
         		cpu1300.setText(tableValues[i]);
         	}
         	
         	//1200mhz
         	if (i == 7) { 		
-                EditText cpu1200 = (EditText)findViewById(R.id.editText1200);
+        		TextView cpu1200 = (TextView)findViewById(R.id.viewText1200);
         		cpu1200.setText(tableValues[i]);
         	}
         	
         	//1000mhz
         	if (i == 10) { 		
-                EditText cpu1000 = (EditText)findViewById(R.id.editText1000);
+        		TextView cpu1000 = (TextView)findViewById(R.id.viewText1000);
         		cpu1000.setText(tableValues[i]);
         	}
         	
         	//800mhz
         	if (i == 13) { 		
-                EditText cpu800 = (EditText)findViewById(R.id.editText800);
+        		TextView cpu800 = (TextView)findViewById(R.id.viewText800);
         		cpu800.setText(tableValues[i]);
         	}
         	
         	//400mhz
         	if (i == 16) { 		
-                EditText cpu400 = (EditText)findViewById(R.id.editText400);
+        		TextView cpu400 = (TextView)findViewById(R.id.viewText400);
         		cpu400.setText(tableValues[i]);
         	}
         	
         	//200mhz
         	if (i == 19) { 		
-                EditText cpu200 = (EditText)findViewById(R.id.editText200);
+        		TextView cpu200 = (TextView)findViewById(R.id.viewText200);
         		cpu200.setText(tableValues[i]);
         	}
         	
         	//100mhz
         	if (i == 22) { 		
-                EditText cpu100 = (EditText)findViewById(R.id.editText100);
+        		TextView cpu100 = (TextView)findViewById(R.id.viewText100);
         		cpu100.setText(tableValues[i]);
         	}
 
@@ -324,16 +393,18 @@ public class VoltageControl extends Activity {
 		Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
 	}
 	
-	private void removeBootSettings() {
-		if (!ShellInterface.getProcessOutput(C_LIST_INIT_D).contains("proton_voltage_control")) {
-			Toast.makeText(getBaseContext(), "Error: No Saved Boot Settings Present", Toast.LENGTH_LONG).show();
-		}
-		else {
-			ShellInterface.runCommand("busybox mount -o remount,rw  /system");
-			ShellInterface.runCommand("rm /etc/init.d/proton_voltage_control");
-			ShellInterface.runCommand("busybox mount -o remount,ro  /system");
-			Toast.makeText(this, "Removed settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
-		}
+	public void AlertWindow(String et){
+		String AlertMsg = et;
+		
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        alertbox.setMessage(AlertMsg);
+        alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+
+            }
+        });
+        alertbox.show();
 	}
+	
 	
 }

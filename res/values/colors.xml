@@ -6,4 +6,5 @@
     <color name="black">#ff000000</color>
     <color name="green">#ff158843</color>
     <color name="transparent">#00000000</color>
+    <color name="prefs_heading_proton">#FF8d2122</color>
 </resources>

@@ -15,7 +15,8 @@
 
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="false">
         <activity android:name=".VoltageControl"
-                  android:label="@string/app_name_long">
+                  android:label="@string/app_name_long"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,9 +25,20 @@
 
 	<activity
 	        android:name=".ProtonPrefs"
-	        android:label="@string/settings">
+	        android:label="@string/settings"
+	        android:screenOrientation="portrait">
 	        <intent-filter>
                 <action android:name="android.intent.action.SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+		</activity>
+
+	<activity
+	        android:name=".VoltageControlSlider"
+	        android:label="@string/app_name_long"
+	        android:screenOrientation="portrait">
+	        <intent-filter>
+                <action android:name="android.intent.action.SLIDER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 		</activity>
