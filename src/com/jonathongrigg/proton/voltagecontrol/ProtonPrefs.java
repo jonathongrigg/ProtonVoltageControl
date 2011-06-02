@@ -2,6 +2,7 @@ package com.jonathongrigg.proton.voltagecontrol;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,13 +24,13 @@ public class ProtonPrefs extends Activity{
 		super.onCreate(savedInstanceState);
 		
 		SharedPreferences protonPreferences = getSharedPreferences("protonSavedPrefs", 0);
-		int choosenTheme = protonPreferences.getInt(THEME_SETTING, 0);  // throws a '0' if no saved preferences
+		int choosenTheme = protonPreferences.getInt(THEME_SETTING, 0);
 		if(choosenTheme == 1)
 			setContentView(R.layout.settings);
 		else  { // load default theme
 			setContentView(R.layout.settings_proton_theme);
 			findViewById(R.id.saveSettings).getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-		}		
+		}
 		
 				
 		findViewById(R.id.saveSettings).setOnClickListener(mOnConfigClickListener);
