@@ -2,6 +2,7 @@ package com.jonathongrigg.proton.voltagecontrol;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
