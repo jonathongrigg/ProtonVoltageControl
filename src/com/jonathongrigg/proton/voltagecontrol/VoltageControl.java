@@ -39,7 +39,7 @@ public class VoltageControl extends Activity {
 	
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
-	//protected static final String C_LIST_INIT_D = "ls /etc/init.d/";    // moved to ProtonPrefs
+	protected static final String C_LIST_ETC = "ls /etc/";
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
@@ -76,7 +76,7 @@ public class VoltageControl extends Activity {
     	Button customVoltagesButton = (Button) findViewById(R.id.custom_button);
 
 
-    	//change the bg color on buttons to match proton red IF selected
+    	//change the bg colour on buttons to match proton red IF selected
     	if(choosenTheme != 1) {
 	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
@@ -374,6 +374,13 @@ public class VoltageControl extends Activity {
 	}
 	
 	private void saveBootSettings(String et) {
+		
+		// Check if ROM is SuperAOSP (doesn't use init.d, uses super2)
+		boolean superAosp = false;
+		if (ShellInterface.getProcessOutput(C_LIST_ETC).contains("super2")) {
+			superAosp = true;
+		}
+		
 		try {
 			OutputStreamWriter out = new OutputStreamWriter(openFileOutput(
 					"proton_voltage_control", 0));
@@ -386,11 +393,20 @@ public class VoltageControl extends Activity {
 			Toast.makeText(this, "Error: file not saved!", Toast.LENGTH_LONG).show();
 		}
 
-		ShellInterface.runCommand("chmod 777 /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control");
-		ShellInterface.runCommand("busybox mount -o remount,rw  /system");
-		ShellInterface.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/init.d/proton_voltage_control");
-		ShellInterface.runCommand("busybox mount -o remount,ro  /system");
-		Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+		if (superAosp == true) {	// If running SuperAosp, script saved in /etc/super2/
+			ShellInterface.runCommand("chmod 777 /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control");
+			ShellInterface.runCommand("busybox mount -o remount,rw  /system");
+			ShellInterface.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/super2/proton_voltage_control");
+			ShellInterface.runCommand("busybox mount -o remount,ro  /system");
+			Toast.makeText(this, "Settings saved in file \"/etc/super2/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+		}
+		else {
+			ShellInterface.runCommand("chmod 777 /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control");
+			ShellInterface.runCommand("busybox mount -o remount,rw  /system");
+			ShellInterface.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/init.d/proton_voltage_control");
+			ShellInterface.runCommand("busybox mount -o remount,ro  /system");
+			Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	public void AlertWindow(String et){

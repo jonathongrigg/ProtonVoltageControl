@@ -17,6 +17,8 @@ public class ProtonPrefs extends Activity{
 
 	//commands
 	protected static final String C_LIST_INIT_D = "ls /etc/init.d/";
+	protected static final String C_LIST_SUPER2 = "ls /etc/super2/";
+	protected static final String C_LIST_ETC = "ls /etc/";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,14 +78,32 @@ public class ProtonPrefs extends Activity{
 	};
 	
 	private void removeBootSettings() {
-		if (!ShellInterface.getProcessOutput(C_LIST_INIT_D).contains("proton_voltage_control")) {
+		
+		// Check if ROM is SuperAOSP (doesn't use init.d, uses super2)
+		boolean superAosp = false;
+		if (!ShellInterface.getProcessOutput(C_LIST_ETC).contains("super2")) {
+			superAosp = true;
+		}
+				
+		if (superAosp == false && !ShellInterface.getProcessOutput(C_LIST_INIT_D).contains("proton_voltage_control")) {
+			Toast.makeText(getBaseContext(), "Error: No Saved Boot Settings Present", Toast.LENGTH_LONG).show();
+		}
+		else if (superAosp == true && !ShellInterface.getProcessOutput(C_LIST_SUPER2).contains("proton_voltage_control")) {
 			Toast.makeText(getBaseContext(), "Error: No Saved Boot Settings Present", Toast.LENGTH_LONG).show();
 		}
 		else {
-			ShellInterface.runCommand("busybox mount -o remount,rw  /system");
-			ShellInterface.runCommand("rm /etc/init.d/proton_voltage_control");
-			ShellInterface.runCommand("busybox mount -o remount,ro  /system");
-			Toast.makeText(this, "Removed settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+			if (superAosp = true) {
+				ShellInterface.runCommand("busybox mount -o remount,rw  /system");
+				ShellInterface.runCommand("rm /etc/super2/proton_voltage_control");
+				ShellInterface.runCommand("busybox mount -o remount,ro  /system");
+				Toast.makeText(this, "Removed settings saved in file \"/etc/super2/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+			}
+			else {
+				ShellInterface.runCommand("busybox mount -o remount,rw  /system");
+				ShellInterface.runCommand("rm /etc/init.d/proton_voltage_control");
+				ShellInterface.runCommand("busybox mount -o remount,ro  /system");
+				Toast.makeText(this, "Removed settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 
