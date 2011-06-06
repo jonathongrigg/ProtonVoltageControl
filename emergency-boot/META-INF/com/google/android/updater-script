@@ -1,10 +1,12 @@
+ui_print(" ");
 ui_print("Emergency Restore for Proton Voltage Control 'Set on Boot' feature");
 ui_print(" ");
-ui_print("You've obviously set your voltages out of your phones tolerance levels :(");
 ui_print(" ");
+ui_print("Please don't go so low next time!");
 ui_print("Removing proton_voltage_control init.d script...");
 run_program("/sbin/busybox", "mount", "/system");
 show_progress(1, 15);
 delete("/system/etc/init.d/proton_voltage_control");
+delete("/system/etc/super2/proton_voltage_control");
 run_program("/sbin/busybox", "umount", "/system");
 ui_print("Successfully removed!");
