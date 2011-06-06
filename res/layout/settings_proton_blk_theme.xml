@@ -3,7 +3,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent" 
-    android:orientation="vertical" android:background="@drawable/background_proton_red">
+    android:orientation="vertical" android:background="@drawable/background_proton_black">
  
 	<!--  <RelativeLayout android:id="@+id/LinearLayout02" android:layout_width="250px" android:layout_height="100px" 
 		android:orientation="vertical">
@@ -12,8 +12,8 @@
 						android:layout_height="wrap_content" android:layout_marginBottom="5sp" android:background="@color/darker_gray" />
 	</RelativeLayout>  -->
 	
-	<TextView android:text="@string/prefs_heading_theme" android:layout_width="fill_parent" android:background="@color/prefs_heading_proton" android:gravity="center_vertical|left"
-						android:layout_height="50px" android:layout_marginTop="8px" android:textStyle="bold" android:textSize="8pt" android:paddingLeft="15px" android:textColor="#ffffff" />
+	<TextView android:text="@string/prefs_heading_theme" android:layout_width="fill_parent" android:background="@color/darker_gray" android:gravity="center_vertical|left"
+						android:layout_height="50px" android:layout_marginTop="8px" android:textStyle="bold" android:textSize="8pt" android:paddingLeft="15px" android:textColor="@color/black" />
 	<TextView android:text="@string/theme_instruction" android:id="@+id/themeInstruction" android:layout_width="wrap_content" android:layout_height="wrap_content" 
 						android:layout_marginBottom="8sp" android:layout_marginTop="3sp" android:textSize="17px" android:paddingLeft="15px" />
 	
@@ -21,14 +21,14 @@
 	<Spinner android:id="@+id/themeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content"></Spinner>
 	
 		
-	<TextView android:text="@string/prefs_heading_user" android:layout_width="fill_parent" android:background="@color/prefs_heading_proton" android:textStyle="bold" android:gravity="center_vertical|left"
-						android:layout_height="50px" android:layout_marginBottom="4sp" android:layout_marginTop="40px"  android:textSize="8pt" android:paddingLeft="15px" android:textColor="#ffffff" />
+	<TextView android:text="@string/prefs_heading_user" android:layout_width="fill_parent" android:background="@color/darker_gray" android:textStyle="bold" android:gravity="center_vertical|left"
+						android:layout_height="50px" android:layout_marginBottom="4sp" android:layout_marginTop="40px"  android:textSize="8pt" android:paddingLeft="15px" android:textColor="@color/black" />
 	<!--  save on boot? -->
 	<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:baselineAligned="true" android:gravity="center_vertical|left">
 		<CheckBox android:text="@string/checkbox_prefs_reboot" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 	</LinearLayout>
 	
-	<Button android:text="@string/button_prefs_save" android:id="@+id/saveSettings" android:layout_marginTop="40sp" android:layout_width="wrap_content" android:layout_height="wrap_content" 
-						android:textColor="@color/white" android:shadowRadius="0" android:layout_marginLeft="300px" />
+	<Button android:text="@string/button_prefs_save" android:id="@+id/saveSettings" android:layout_marginTop="40sp" android:layout_width="wrap_content" 
+						android:layout_height="wrap_content" android:textColor="@color/white" android:shadowRadius="0" android:layout_marginLeft="300px" />
 	
 </LinearLayout>

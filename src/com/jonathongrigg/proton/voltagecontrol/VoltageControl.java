@@ -55,6 +55,8 @@ public class VoltageControl extends Activity {
         int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 0);
         if(choosenTheme == 1)
 			setContentView(R.layout.main);
+        else if (choosenTheme == 2)
+        	setContentView(R.layout.main_proton_blk_theme);
 		else  // using else will guarantee that proton is "default" 
 			setContentView(R.layout.main_proton_theme);
                 
@@ -77,12 +79,18 @@ public class VoltageControl extends Activity {
 
 
     	//change the bg colour on buttons to match proton red IF selected
-    	if(choosenTheme != 1) {
+    	if(choosenTheme != 1 && choosenTheme != 2) {
 	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	recommendedVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
 	    	customVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
+    	} else if (choosenTheme != 1 && choosenTheme != 0) {
+    		applyVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
+	    	existingVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
+	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
+	    	recommendedVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
+	    	customVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
     	}
 
     	
