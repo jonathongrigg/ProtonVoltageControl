@@ -50,7 +50,7 @@
 		tuna:minimumValue="800"
 		tuna:maximumValue="1600"
 		tuna:stepSize="25"
-		android:title="1200nhz"
+		android:title="1200mhz"
 		android:summary="Set your custom voltage for 1.2GHz"/>
 		
 	<com.jonathongrigg.proton.voltagecontrol.SeekBarDialogPreference
