@@ -377,7 +377,7 @@ public class VoltageControl extends Activity {
 	
 	private void downloadEmergencyBoot() {
 		Intent downloadIntent = new Intent(Intent.ACTION_VIEW,
-			Uri.parse("http://dl.andro1d.org/proton_emergency_boot.zip"));
+			Uri.parse("http://download.jonathongrigg.com/apps/proton_emergency_boot.zip"));
 			startActivity(downloadIntent); 
 	}
 	
