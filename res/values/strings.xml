@@ -10,7 +10,7 @@
 
 <resources>
     <string name="app_name">Proton</string>
-    <string name="app_version">1.2</string>
+    <string name="app_version">1.3</string>
     <string name="button_get_existing_voltages">Existing</string>
     <string name="button_apply">Apply new voltages</string>
     <string name="stock_voltages">1450 1400 1350 1250 1200 1050 950 950</string>
@@ -37,6 +37,7 @@
     <string-array name="theme_array">
 		<item>Theme: Proton Red (default)</item>
 		<item>Theme: Black</item>
+		<item>Theme: Proton Black</item>
     </string-array>
     <string name="theme_instruction">Please reload Proton for theme changes to take effect</string>
     <string name="menu_voltage">Custom Voltages</string>
