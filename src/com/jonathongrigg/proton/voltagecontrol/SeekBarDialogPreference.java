@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-
-
 public class SeekBarDialogPreference extends
 		DialogPreference implements SeekBar.OnSeekBarChangeListener {
 	// Layout widgets.
@@ -22,6 +20,7 @@ public class SeekBarDialogPreference extends
 	private int maximumValue = 0;
 	private int minimumValue = 0;
 	private int stepSize = 0;
+	private int stockValue = 0;
 	private String units = null;
 
 	private int value = 0;
@@ -43,6 +42,8 @@ public class SeekBarDialogPreference extends
 			R.styleable.SeekBarDialogPreference_minimumValue, 0);
 		stepSize = typedArray.getInteger(
 			R.styleable.SeekBarDialogPreference_stepSize, 1);
+		stockValue = typedArray.getInteger(
+			R.styleable.SeekBarDialogPreference_stockValue, 0);
 		units = typedArray.getString(
 			R.styleable.SeekBarDialogPreference_units);
 
@@ -59,11 +60,14 @@ public class SeekBarDialogPreference extends
 
 		seekBar = (SeekBar)view.findViewById(R.id.seekbar);
 		valueText = (TextView)view.findViewById(R.id.valueText);
+		
+		// Sets the TextView to minimumValue, otherwise it will be blank until the slider is used
+		valueText.setText(Integer.toString(minimumValue));
 
 		// Get the persistent value and correct it for the minimum value.
 		value = getPersistedInt(minimumValue) - minimumValue;
 
-		// You're never know...
+		// You never know...
 		if (value < 0) {
 			value = 0;
 		}

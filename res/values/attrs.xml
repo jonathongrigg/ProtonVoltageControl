@@ -4,6 +4,7 @@
 		<attr name="maximumValue" format="integer" />
 		<attr name="minimumValue" format="integer" />
 		<attr name="stepSize" format="integer" />
+		<attr name="stockValue" format="integer" />
 		<attr name="units" format="string" />
 	</declare-styleable>
 </resources>
