@@ -18,17 +18,12 @@
     		android:label="@string/app_name"
     		android:theme="@android:style/Theme.NoTitleBar">
     		
-        <activity android:name=".VoltageList"
+        <activity android:name=".VoltageControl"
                   android:label="@string/app_name_long">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".VoltageControl"
-                  android:label="@string/app_name_long"
-                  android:screenOrientation="portrait">
         </activity>
 
 	<activity
