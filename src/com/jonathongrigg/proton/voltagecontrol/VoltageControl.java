@@ -39,6 +39,9 @@ public class VoltageControl extends Activity {
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
 	protected static final String C_LIST_ETC = "ls /etc/";
+	protected static final String C_LIST_INIT_D = "ls /etc/init.d/";
+	protected static final String C_LIST_SUPER2 = "ls /etc/super2/";
+
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 
@@ -170,18 +173,6 @@ public class VoltageControl extends Activity {
         case R.id.menuEmergencyBoot:
             downloadEmergencyBoot();
             return true;
-        case R.id.menuSettings:
-			//setContentView(R.layout.settings);
-			Intent prefs = new Intent();
-			prefs.setClass(this, ProtonPrefs.class);
-			startActivity(prefs);
-			return true;
-        case R.id.menuCustomVoltage:
-			//setContentView(R.layout.seekbardialogpreference_layout);
-			Intent custVolt = new Intent();
-			custVolt.setClass(this, VoltageControlSlider.class);
-			startActivity(custVolt);
-			return true;
         default:
             return super.onOptionsItemSelected(item);
         }
@@ -386,6 +377,36 @@ public class VoltageControl extends Activity {
 			ShellInterface.runCommand("busybox cp /data/data/com.jonathongrigg.proton.voltagecontrol/files/proton_voltage_control /etc/init.d/proton_voltage_control");
 			ShellInterface.runCommand("busybox mount -o remount,ro  /system");
 			Toast.makeText(this, "Settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+		}
+	}
+	
+	private void removeBootSettings() {
+		
+		// Check if ROM is SuperAOSP (doesn't use init.d, uses super2)
+		boolean superAosp = false;
+		if (!ShellInterface.getProcessOutput(C_LIST_ETC).contains("super2")) {
+			superAosp = true;
+		}
+				
+		if (superAosp == false && !ShellInterface.getProcessOutput(C_LIST_INIT_D).contains("proton_voltage_control")) {
+			Toast.makeText(getBaseContext(), "Error: No Saved Boot Settings Present", Toast.LENGTH_LONG).show();
+		}
+		else if (superAosp == true && !ShellInterface.getProcessOutput(C_LIST_SUPER2).contains("proton_voltage_control")) {
+			Toast.makeText(getBaseContext(), "Error: No Saved Boot Settings Present", Toast.LENGTH_LONG).show();
+		}
+		else {
+			if (superAosp = true) {
+				ShellInterface.runCommand("busybox mount -o remount,rw  /system");
+				ShellInterface.runCommand("rm /etc/super2/proton_voltage_control");
+				ShellInterface.runCommand("busybox mount -o remount,ro  /system");
+				Toast.makeText(this, "Removed settings saved in file \"/etc/super2/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+			}
+			else {
+				ShellInterface.runCommand("busybox mount -o remount,rw  /system");
+				ShellInterface.runCommand("rm /etc/init.d/proton_voltage_control");
+				ShellInterface.runCommand("busybox mount -o remount,ro  /system");
+				Toast.makeText(this, "Removed settings saved in file \"/etc/init.d/proton_voltage_control\"", Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 	
