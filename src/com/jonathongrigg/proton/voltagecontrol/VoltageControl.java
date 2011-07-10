@@ -59,12 +59,12 @@ public class VoltageControl extends Activity {
         	//load existing voltages with assumption that user is using a compatible kernel
         	getExistingVoltages();
         }**/
-        
+        /**
         //declare all buttons
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
     	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
-    	Button customVoltagesButton = (Button) findViewById(R.id.custom_button);
+    	Button customVoltagesButton = (Button) findViewById(R.id.custom_button);**/
 
     	
         /**applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
