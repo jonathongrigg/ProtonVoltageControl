@@ -22,7 +22,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class VoltageControl extends Activity {
@@ -119,7 +118,7 @@ public class VoltageControl extends Activity {
             }
         });**/
     	
-        
+        /**
         View.OnClickListener listener = new View.OnClickListener() {
             public void onClick(View v) {
             	switch(v.getId()) {
@@ -143,7 +142,7 @@ public class VoltageControl extends Activity {
     	defaultVoltagesButton.setOnClickListener(listener);
     	recommendedVoltagesButton.setOnClickListener(listener);
     	customVoltagesButton.setOnClickListener(listener);
-    	
+    	**/
     }
 
     private void loadSliderData() {
