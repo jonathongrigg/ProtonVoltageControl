@@ -1,7 +1,7 @@
 package com.jonathongrigg.proton.voltagecontrol;
 
 /*
-** Copyright Jonathon Grigg <http://www.jonathongrigg.com> May 2011
+** Copyright Jonathon Grigg <http://www.jonathongrigg.com> June 2011
 ** Email me at jonathongrigg@gmail.com if needed for some reason
 ** 
 ** Source code licensed under the Open Software License version 3.0
@@ -9,19 +9,18 @@ package com.jonathongrigg.proton.voltagecontrol;
 */
 
 import java.io.OutputStreamWriter;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,21 +44,10 @@ public class VoltageControl extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	//HIDE KEYBOARD UNTIL A TEXT FIELD IS CLICKED
-		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		  	
         super.onCreate(savedInstanceState);
         
-        //lookup, then load selected theme OR default is 'proton red'
-        SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
-        int choosenTheme = settings.getInt(ProtonPrefs.THEME_SETTING, 0);
-        if(choosenTheme == 1)
-			setContentView(R.layout.main);
-        else if (choosenTheme == 2)
-        	setContentView(R.layout.main_proton_blk_theme);
-		else  // using else will guarantee that proton is "default" 
-			setContentView(R.layout.main_proton_theme);
-                
+		setContentView(R.layout.main);
 
         // Error checking, if pass SU check then load kernel voltages
         if (isSuAvailable = false) {
@@ -76,22 +64,6 @@ public class VoltageControl extends Activity {
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
     	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
     	Button customVoltagesButton = (Button) findViewById(R.id.custom_button);
-
-
-    	//change the bg colour on buttons to match proton red IF selected
-    	if(choosenTheme != 1 && choosenTheme != 2) {
-	    	applyVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-	    	existingVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-	    	recommendedVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-	    	customVoltagesButton.getBackground().setColorFilter(0xFF8d2122, PorterDuff.Mode.MULTIPLY);
-    	} else if (choosenTheme != 1 && choosenTheme != 0) {
-    		applyVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
-	    	existingVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
-	    	defaultVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
-	    	recommendedVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
-	    	customVoltagesButton.getBackground().setColorFilter(0xFF666666, PorterDuff.Mode.MULTIPLY);
-    	}
 
     	
         applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
