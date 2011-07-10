@@ -12,13 +12,36 @@
     android:layout_height="match_parent" android:layout_width="match_parent" 
     android:orientation="vertical">
     
-    <ExpandableListView android:layout_height="wrap_content" android:id="@+id/expandableListView1" android:layout_width="match_parent" />   
+    <com.markupartist.android.widget.ActionBar
+    	xmlns:app="http://schemas.android.com/apk/res/com.jonathongrigg.proton.voltagecontrol"
+    	android:id="@+id/actionbar"
+    	app:title="@string/app_name_long"
+    	style="@style/ActionBar"
+    	/>
+    	
+    <RelativeLayout android:layout_height="wrap_content"
+		android:id="@+id/relativeLayout1"
+    	android:layout_width="match_parent">
     
-    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_height="wrap_content" android:layout_gravity="top">
-    	<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="92px" android:textColor="@color/black" android:shadowRadius="0"/>
-		<Button android:text="@string/button_custom_voltage" android:id="@+id/custom_button" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="92px" android:textColor="@color/black" android:shadowRadius="0"/>
-    	<Button android:text="@string/button_recommended_voltages" android:id="@+id/button4" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="110px" android:textColor="@color/black" android:shadowRadius="0"/>  
-    	<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="77px" android:textColor="@color/black" android:shadowRadius="0"/>
+    
+    <ListView android:id="@android:id/list"
+    	android:layout_height="wrap_content"
+    	android:layout_width="match_parent" />
+    
+    <LinearLayout android:layout_width="match_parent"
+    	android:id="@+id/linearLayout1"
+    	android:orientation="horizontal"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity="top"
+    	android:layout_alignParentBottom="true"
+    	android:padding="2px">
+    	
+    		<Button android:id="@+id/button2" android:text="@string/button_get_existing_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="match_parent" />
+    		<Button android:text="@string/button_recommended_voltages" android:id="@+id/button4" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="match_parent" />  
+    		<Button android:id="@+id/button3" android:text="@string/button_default_voltages" android:layout_weight="1" android:layout_gravity="top" android:layout_height="75px" android:layout_width="match_parent" />
+    
     </LinearLayout>
+    
+    </RelativeLayout>
      
 </LinearLayout>
