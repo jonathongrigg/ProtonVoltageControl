@@ -12,7 +12,6 @@ import java.io.OutputStreamWriter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,10 +21,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListAdapter;
 import android.widget.Toast;
 
-public class VoltageControl extends ListActivity {
+public class VoltageControl extends Activity {
 	// user entered custom voltages 100mhz-1.4ghz
 	int seekBar100;
 	int seekBar200;
@@ -44,6 +46,10 @@ public class VoltageControl extends ListActivity {
 
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
+	
+	// Voltage lists
+	ExpandableListView voltageList;
+	String voltagesToShow[] = {"100mhz","200mhz","400mhz","800mhz","1000mhz","1200mhz","1300mhz","1400mhz"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,8 @@ public class VoltageControl extends ListActivity {
         super.onCreate(savedInstanceState);
         
 		setContentView(R.layout.main);
+		voltageList = (ExpandableListView)findViewById(android.R.id.list);
+		voltageList.setAdapter(new ExpandableListAdapter(this,android.R.layout.simple_expandable_list_item_1 , voltagesToShow));
 
         // Error checking, if pass SU check then load kernel voltages
         if (isSuAvailable = false) {
