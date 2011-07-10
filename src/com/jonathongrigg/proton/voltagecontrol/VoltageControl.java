@@ -62,14 +62,13 @@ public class VoltageControl extends Activity {
         }
         
         //declare all buttons
-    	Button applyVoltagesButton = (Button) findViewById(R.id.button1);
     	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
     	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
     	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
     	Button customVoltagesButton = (Button) findViewById(R.id.custom_button);
 
     	
-        applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
+        /**applyVoltagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	TextView placeholder = (TextView) findViewById(R.id.viewText1400);
             		if ((placeholder.getText().toString().equals(""))) { Toast.makeText(getBaseContext(), "Error: No Voltage Entered for 1.4ghz", Toast.LENGTH_LONG).show(); }
@@ -118,7 +117,7 @@ public class VoltageControl extends Activity {
             		}
             	}  
             }
-        });
+        });**/
     	
         
         View.OnClickListener listener = new View.OnClickListener() {
@@ -128,13 +127,13 @@ public class VoltageControl extends Activity {
             		  getExistingVoltages();
             	      break;
             	  case R.id.button3:
-            		  defaultVoltages();
+            		  //defaultVoltages();
             	      break;
             	  case R.id.button4:
-            		  recommendedVoltages();
+            		  //recommendedVoltages();
             	      break;
             	  case R.id.custom_button:
-            		  customVoltages();
+            		  //customVoltages();
             	      break;
             	}
             }
@@ -178,7 +177,7 @@ public class VoltageControl extends Activity {
         }
     }
     
-    private void defaultVoltages() {
+    /**private void defaultVoltages() {
     	findViewById(R.id.button1).setVisibility(View.VISIBLE);  // show apply button
     	// Edit text boxes
         TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);	// 1400mhz
@@ -261,10 +260,10 @@ public class VoltageControl extends Activity {
         cpu400.setText(rv[5]);
         cpu200.setText(rv[6]);
         cpu100.setText(rv[7]);
-    }
+    }**/
     
     private void getExistingVoltages() {
-    	findViewById(R.id.button1).setVisibility(View.GONE);  // existing values do not need button
+    	//findViewById(R.id.button1).setVisibility(View.GONE);  // existing values do not need button
         String existingVoltagesValue = null;
         String[] tableValues;
         StringBuilder voltages = new StringBuilder();
@@ -273,7 +272,7 @@ public class VoltageControl extends Activity {
         
         tableValues = existingVoltagesValue.split(" ");
         for (int i = 1; i < tableValues.length; i += 3) {
-        	
+        	/**
         	//1400mhz
         	if (i == 1) { 		
         		TextView cpu1400 = (TextView)findViewById(R.id.viewText1400);
@@ -320,7 +319,7 @@ public class VoltageControl extends Activity {
         	if (i == 22) { 		
         		TextView cpu100 = (TextView)findViewById(R.id.viewText100);
         		cpu100.setText(tableValues[i]);
-        	}
+        	}**/
 
         	voltages.append(tableValues[i]);
         	voltages.append(" ");
