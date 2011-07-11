@@ -134,7 +134,7 @@ public class VoltageControl extends GDListActivity {
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_info, R.string.quickaction_about));
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_help, R.string.quickaction_help));
 
-        actionGrid.setOnQuickActionClickListener(mActionListener);
+        actionGrid.setOnQuickActionClickListener(actionGridListener);
     }
     
     private void prepareVoltageGrid() {
@@ -143,12 +143,18 @@ public class VoltageControl extends GDListActivity {
         voltageGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_star, R.string.quickaction_stock));
         voltageGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_star, R.string.quickaction_existing));
       
-        voltageGrid.setOnQuickActionClickListener(mActionListener);
+        voltageGrid.setOnQuickActionClickListener(voltageGridListener);
     }
 
-    private OnQuickActionClickListener mActionListener = new OnQuickActionClickListener() {
+    private OnQuickActionClickListener actionGridListener = new OnQuickActionClickListener() {
         public void onQuickActionClicked(QuickActionWidget widget, int position) {
-            Toast.makeText(VoltageControl.this, "Item " + position + " clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(VoltageControl.this, "Action Item " + position + " clicked", Toast.LENGTH_SHORT).show();
+        }
+    };
+    
+    private OnQuickActionClickListener voltageGridListener = new OnQuickActionClickListener() {
+        public void onQuickActionClicked(QuickActionWidget widget, int position) {
+            Toast.makeText(VoltageControl.this, "Voltage Item " + position + " clicked", Toast.LENGTH_SHORT).show();
         }
     };
     
