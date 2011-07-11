@@ -11,13 +11,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent" 
     android:orientation="vertical">
-    
-    <com.markupartist.android.widget.ActionBar
-    	xmlns:app="http://schemas.android.com/apk/res/com.jonathongrigg.proton.voltagecontrol"
-    	android:id="@+id/actionbar"
-    	app:title="@string/app_name_long"
-    	style="@style/ActionBar"
-    	/>
     	
     <RelativeLayout android:layout_height="wrap_content"
 		android:id="@+id/relativeLayout1"
