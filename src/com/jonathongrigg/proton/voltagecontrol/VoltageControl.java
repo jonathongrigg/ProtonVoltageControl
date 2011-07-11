@@ -9,17 +9,28 @@ package com.jonathongrigg.proton.voltagecontrol;
 */
 
 import greendroid.app.GDListActivity;
+import greendroid.widget.ActionBarItem;
 import greendroid.widget.ItemAdapter;
+import greendroid.widget.QuickAction;
+import greendroid.widget.QuickActionGrid;
+import greendroid.widget.QuickActionWidget;
 import greendroid.widget.ActionBar.Type;
+import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 
 import java.io.OutputStreamWriter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -34,12 +45,18 @@ public class VoltageControl extends GDListActivity {
 	// Checks
 	boolean isSuAvailable = ShellInterface.isSuAvailable();
 	
+	// UI
+	private QuickActionWidget actionGrid;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
 		  	
         super.onCreate(savedInstanceState);
         
         getActionBar().setType(Type.Empty);
+        prepareQuickActionGrid();
+        addActionBarItem(ActionBarItem.Type.Edit);
+        addActionBarItem(ActionBarItem.Type.Settings);
         
         ItemAdapter adapter;
         try {
@@ -104,6 +121,59 @@ public class VoltageControl extends GDListActivity {
     	defaultVoltagesButton.setOnClickListener(listener);
     	recommendedVoltagesButton.setOnClickListener(listener);
     	**/
+    }
+    
+    private void prepareQuickActionGrid() {
+        actionGrid = new QuickActionGrid(this);
+        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_compose, R.string.quickaction_apply));
+        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_compose, R.string.quickaction_save_boot));
+        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_trashcan, R.string.quickaction_remove));
+        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_star, R.string.quickaction_donate));
+        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_info, R.string.quickaction_about));
+        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_help, R.string.quickaction_help));
+
+        actionGrid.setOnQuickActionClickListener(mActionListener);
+    }
+
+    private OnQuickActionClickListener mActionListener = new OnQuickActionClickListener() {
+        public void onQuickActionClicked(QuickActionWidget widget, int position) {
+            Toast.makeText(VoltageControl.this, "Item " + position + " clicked", Toast.LENGTH_SHORT).show();
+        }
+    };
+    
+    private static class MyQuickAction extends QuickAction {
+        
+        private static final ColorFilter BLACK_CF = new LightingColorFilter(Color.BLACK, Color.BLACK);
+
+        public MyQuickAction(Context ctx, int drawableId, int titleId) {
+            super(ctx, buildDrawable(ctx, drawableId), titleId);
+        }
+        
+        private static Drawable buildDrawable(Context ctx, int drawableId) {
+            Drawable d = ctx.getResources().getDrawable(drawableId);
+            d.setColorFilter(BLACK_CF);
+            return d;
+        }
+        
+    }
+    
+    public void onShowGrid(View v) {
+        actionGrid.show(v);
+    }
+    
+    @Override
+    public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
+
+        switch (position) {
+            case 1:
+                onShowGrid(item.getItemView());
+                break;
+
+            default:
+                return super.onHandleActionBarItemClick(item, position);
+        }
+
+        return true;
     }
     
     public boolean onCreateOptionsMenu(Menu menu) {
