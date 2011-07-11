@@ -56,7 +56,7 @@ public class SeekBarDialogPreference extends
 		LayoutInflater layoutInflater = LayoutInflater.from(getContext());
 
 		View view = layoutInflater.inflate(
-			R.layout.seekbardialogpreference_layout, null);
+			R.layout.slider, null);
 
 		seekBar = (SeekBar)view.findViewById(R.id.seekbar);
 		valueText = (TextView)view.findViewById(R.id.valueText);
