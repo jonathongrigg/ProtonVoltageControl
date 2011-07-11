@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<item-array
+    xmlns:greendroid="http://schemas.android.com/apk/res/com.jonathongrigg.proton.voltagecontrol">
+    <text-item greendroid:text="100mhz" />
+    <text-item greendroid:text="200mhz" />
+    <text-item greendroid:text="400mhz" />
+    <text-item greendroid:text="800mhz" />
+    <text-item greendroid:text="1000mhz" />
+    <text-item greendroid:text="1200mhz" />
+    <text-item greendroid:text="1300mhz" />
+    <text-item greendroid:text="1400mhz" />
+</item-array>

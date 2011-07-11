@@ -8,7 +8,8 @@ package com.jonathongrigg.proton.voltagecontrol;
 ** 	http://www.opensource.org/licenses/osl-3.0
 */
 
-import greendroid.app.GDExpandableListActivity;
+import greendroid.app.GDListActivity;
+import greendroid.widget.ItemAdapter;
 
 import java.io.OutputStreamWriter;
 
@@ -21,7 +22,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class VoltageControl extends GDExpandableListActivity {
+public class VoltageControl extends GDListActivity {
 	
 	// Commands
 	protected static final String C_UV_MV_TABLE = "cat /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
@@ -37,8 +38,14 @@ public class VoltageControl extends GDExpandableListActivity {
 		  	
         super.onCreate(savedInstanceState);
         
-		//setContentView(R.layout.main);
-		
+        ItemAdapter adapter;
+        try {
+            adapter = ItemAdapter.createFromXml(this, R.xml.voltages);
+            setListAdapter(adapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         // Error checking, if pass SU check then load kernel voltages
         if (isSuAvailable = false) {
         	Toast.makeText(getBaseContext(), "ERROR: No Root Access!", Toast.LENGTH_LONG).show();
