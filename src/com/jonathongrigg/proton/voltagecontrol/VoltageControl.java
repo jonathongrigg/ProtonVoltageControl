@@ -11,6 +11,7 @@ package com.jonathongrigg.proton.voltagecontrol;
 import greendroid.app.GDListActivity;
 import greendroid.widget.ActionBarItem;
 import greendroid.widget.ItemAdapter;
+import greendroid.widget.NormalActionBarItem;
 import greendroid.widget.QuickAction;
 import greendroid.widget.QuickActionGrid;
 import greendroid.widget.QuickActionWidget;
@@ -57,7 +58,10 @@ public class VoltageControl extends GDListActivity {
         getActionBar().setType(Type.Empty);
         prepareActionGrid();
         prepareVoltageGrid();
-        addActionBarItem(ActionBarItem.Type.Edit);
+        addActionBarItem(getActionBar()
+                .newActionBarItem(NormalActionBarItem.class)
+                .setDrawable(R.drawable.ic_lightning)
+                .setContentDescription(R.string.gd_export));
         addActionBarItem(ActionBarItem.Type.Settings);
         
         ItemAdapter adapter;
