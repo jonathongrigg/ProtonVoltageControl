@@ -10,9 +10,9 @@
 
 <resources>
     <string name="app_name">Proton</string>
-    <string name="app_url">http://github.com/cyrilmottier/GreenDroid</string>
-    <string name="app_version">1.3</string>
     <string name="app_name_long">Proton Voltage Control</string>
+    <string name="app_url">http://rootzwiki.com/showthread.php?806-APP-Proton-Voltage-Control-Easy-UV-for-Netarchy-kernels</string>
+    <string name="app_version">2.0</string>
     
     <string name="button_get_existing_voltages">Existing</string>
     <string name="button_apply">Apply new voltages</string>

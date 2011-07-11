@@ -11,7 +11,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	  xmlns:greendroid="http://schemas.android.com/apk/res/com.jonathongrigg.proton.voltagecontrol"
       package="com.jonathongrigg.proton.voltagecontrol"
-      android:versionName="@string/app_version" android:versionCode="121">
+      android:versionName="@string/app_version" android:versionCode="200">
     <uses-sdk android:minSdkVersion="10" />
 
     <application 
@@ -21,9 +21,7 @@
     		android:name=".ProtonApplication">
     		
         <activity android:name=".VoltageControl"
-                  android:label="@string/app_name_long"
-                  greendroid:type="empty"
-                  greendroid:title="@string/app_name_long">
+                  android:label="@string/app_name_long">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

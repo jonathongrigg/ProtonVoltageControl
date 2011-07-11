@@ -2,5 +2,6 @@
 <resources>
 	<style name="Theme.Proton" parent="@style/Theme.GreenDroid.NoTitleBar">
 		<item name="gdActionBarBackground">@drawable/action_bar_background</item>
+		<item name="gdActionBarHomeDrawable">@drawable/icon</item>
 	</style>
 </resources>

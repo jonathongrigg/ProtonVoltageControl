@@ -38,6 +38,8 @@ public class VoltageControl extends GDListActivity {
 		  	
         super.onCreate(savedInstanceState);
         
+        setTitle(getString(R.string.app_name_long));
+        
         ItemAdapter adapter;
         try {
             adapter = ItemAdapter.createFromXml(this, R.xml.voltages);
@@ -45,6 +47,7 @@ public class VoltageControl extends GDListActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         
         // Error checking, if pass SU check then load kernel voltages
         if (isSuAvailable = false) {
