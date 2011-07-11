@@ -10,6 +10,7 @@ package com.jonathongrigg.proton.voltagecontrol;
 
 import greendroid.app.GDListActivity;
 import greendroid.widget.ItemAdapter;
+import greendroid.widget.ActionBar.Type;
 
 import java.io.OutputStreamWriter;
 
@@ -38,7 +39,7 @@ public class VoltageControl extends GDListActivity {
 		  	
         super.onCreate(savedInstanceState);
         
-        setTitle(getString(R.string.app_name_long));
+        getActionBar().setType(Type.Empty);
         
         ItemAdapter adapter;
         try {
