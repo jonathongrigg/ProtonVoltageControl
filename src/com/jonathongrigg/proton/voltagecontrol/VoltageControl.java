@@ -125,7 +125,7 @@ public class VoltageControl extends GDListActivity {
     
     private void prepareQuickActionGrid() {
         actionGrid = new QuickActionGrid(this);
-        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_compose, R.string.quickaction_apply));
+        actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_export, R.string.quickaction_apply));
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_compose, R.string.quickaction_save_boot));
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_trashcan, R.string.quickaction_remove));
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_star, R.string.quickaction_donate));
