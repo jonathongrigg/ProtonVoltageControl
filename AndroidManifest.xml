@@ -17,7 +17,7 @@
     		android:icon="@drawable/icon" 
     		android:label="@string/app_name"
     		android:theme="@style/Theme.Proton"
-    		android:name="greendroid.app.GDApplication">
+    		android:name=".ProtonApplication">
     		
         <activity android:name=".VoltageControl"
                   android:label="@string/app_name_long">
