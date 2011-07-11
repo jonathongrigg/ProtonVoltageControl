@@ -58,12 +58,6 @@ public class VoltageControl extends GDListActivity {
         	//load existing voltages with assumption that user is using a compatible kernel
         	getExistingVoltages();
         }
-
-        //declare all buttons
-    	Button existingVoltagesButton = (Button) findViewById(R.id.button2);
-    	Button defaultVoltagesButton = (Button) findViewById(R.id.button3);
-    	Button recommendedVoltagesButton = (Button) findViewById(R.id.button4);
-
             	/**
             	//check the prefs to see if the user wants voltages in the init
             	SharedPreferences settings = getSharedPreferences("protonSavedPrefs", 0);
