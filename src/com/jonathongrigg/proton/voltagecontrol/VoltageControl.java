@@ -47,6 +47,7 @@ public class VoltageControl extends GDListActivity {
 	
 	// UI
 	private QuickActionWidget actionGrid;
+	private QuickActionGrid voltageGrid;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,8 @@ public class VoltageControl extends GDListActivity {
         super.onCreate(savedInstanceState);
         
         getActionBar().setType(Type.Empty);
-        prepareQuickActionGrid();
+        prepareActionGrid();
+        prepareVoltageGrid();
         addActionBarItem(ActionBarItem.Type.Edit);
         addActionBarItem(ActionBarItem.Type.Settings);
         
@@ -123,7 +125,7 @@ public class VoltageControl extends GDListActivity {
     	**/
     }
     
-    private void prepareQuickActionGrid() {
+    private void prepareActionGrid() {
         actionGrid = new QuickActionGrid(this);
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_export, R.string.quickaction_apply));
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_compose, R.string.quickaction_save_boot));
@@ -133,6 +135,15 @@ public class VoltageControl extends GDListActivity {
         actionGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_help, R.string.quickaction_help));
 
         actionGrid.setOnQuickActionClickListener(mActionListener);
+    }
+    
+    private void prepareVoltageGrid() {
+        voltageGrid = new QuickActionGrid(this);
+        voltageGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_star, R.string.quickaction_suggested));
+        voltageGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_star, R.string.quickaction_stock));
+        voltageGrid.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_star, R.string.quickaction_existing));
+      
+        voltageGrid.setOnQuickActionClickListener(mActionListener);
     }
 
     private OnQuickActionClickListener mActionListener = new OnQuickActionClickListener() {
@@ -157,16 +168,23 @@ public class VoltageControl extends GDListActivity {
         
     }
     
-    public void onShowGrid(View v) {
+    public void onShowActionGrid(View v) {
         actionGrid.show(v);
+    }
+    
+    public void onShowVoltageGrid(View v) {
+        voltageGrid.show(v);
     }
     
     @Override
     public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
 
         switch (position) {
+        	case 0:
+        		onShowVoltageGrid(item.getItemView());
+        		break;
             case 1:
-                onShowGrid(item.getItemView());
+                onShowActionGrid(item.getItemView());
                 break;
 
             default:

@@ -26,6 +26,9 @@
     <string name="quickaction_donate">Donate</string>
     <string name="quickaction_about">About</string>
     <string name="quickaction_help">Help</string>
+    <string name="quickaction_suggested">Suggested</string>
+    <string name="quickaction_stock">Stock</string>
+    <string name="quickaction_existing">Existing</string>
     
     <string name="stock_voltages">1450 1400 1350 1250 1200 1050 950 950</string>
     <string name="recommended_voltages">1475 1400 1330 1230 1180 1030 930 930</string>
